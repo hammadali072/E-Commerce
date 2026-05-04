@@ -1,40 +1,47 @@
 import clsx from "clsx";
 
-const ThemeButton = ({ children, variant = 'primary', className = '', ...props }) => {
+const ThemeButton = ({ children, icon: Icon, variant = 'primary', className = '', ...props }) => {
     let variantClasses = '';
+    let hoverBgClasses = '';
+    let hoverTextClasses = '';
+
+    const baseClasses = 'relative flex items-center justify-center gap-3 px-6 py-3.5 text-base font-semibold overflow-hidden duration-500 group';
 
     switch (variant) {
         case 'primary':
-            variantClasses = 'relative rounded-sm border-2 border-primary bg-primary text-white hover:bg-white hover:text-primary before:content-[""] before:absolute before:bg-primaryLight before:-top-[2px] before:right-5 before:w-2.5 before:h-0.5 before:duration-500 after:content-[""] after:absolute after:bg-primaryLight after:-bottom-[2px] after:left-5 after:w-2.5 after:h-0.5 after:duration-500 hover:before:right-3/4 hover:after:left-3/4';
+            variantClasses = 'bg-primary text-dark';
+            hoverBgClasses = 'bg-secondary';
+            hoverTextClasses = 'group-hover:text-white';
             break;
         case 'secondary':
-            variantClasses = 'relative bg-white rounded-sm border-2 border-grey-100 uppercase tracking-widest text-black hover:bg-black hover:text-white before:content-[""] before:absolute before:bg-black before:-top-[2px] before:right-5 before:w-2.5 before:h-0.5 before:duration-500 after:content-[""] after:absolute after:bg-black after:-bottom-[2px] after:left-5 after:w-2.5 after:h-0.5 after:duration-500 hover:before:right-3/4 hover:after:left-3/4';
-            break;
-        case 'secondary2':
-            variantClasses = 'relative bg-black rounded-sm border-2 border-grey-100 uppercase tracking-widest text-white hover:text-black hover:bg-white before:content-[""] before:absolute before:bg-black before:-top-[2px] before:right-5 before:w-2.5 before:h-0.5 before:duration-500 after:content-[""] after:absolute after:bg-black after:-bottom-[2px] after:left-5 after:w-2.5 after:h-0.5 after:duration-500 hover:before:right-3/4 hover:after:left-3/4';
-            break;
-        case 'secondary3':
-            variantClasses = 'relative bg-black rounded-full border-2 border-black uppercase tracking-widest text-white hover:bg-transparent hover:text-black';
+            variantClasses = 'bg-secondary text-white';
+            hoverBgClasses = 'bg-primary';
+            hoverTextClasses = 'group-hover:text-dark';
             break;
         case 'outline':
-            variantClasses = 'border border-primary text-primary hover:bg-primary hover:text-white';
-            break;
-        case 'ghost':
-            variantClasses = 'text-primary hover:bg-primaryLight';
-            break;
-        case 'underline':
-            variantClasses = 'relative rounded-full !p-0 text-black uppercase tracking-widest duration-300 after:content-[""] after:absolute after:w-full after:h-px after:scale-x-100 after:bg-black after:bottom-0 after:origin-center after:left-0 after:duration-300 hover:after:bg-primary hover:after:scale-x-0 hover:text-primary';
+            variantClasses = 'border-2 border-secondary text-secondary bg-transparent hover:border-primary';
+            hoverBgClasses = 'bg-primary';
+            hoverTextClasses = 'group-hover:text-white';
             break;
         default:
-            variantClasses = 'bg-gray-300 text-black';
+            variantClasses = 'bg-primary text-dark';
+            hoverBgClasses = 'bg-secondary';
+            hoverTextClasses = 'group-hover:text-white';
     }
 
-    const baseClasses = 'px-5 py-3 md:text-base text-sm font-medium transition duration-300';
     const combinedClasses = clsx(baseClasses, variantClasses, className).trim();
 
     return (
         <button className={combinedClasses} {...props}>
-            {children}
+            <span className={clsx(
+                "absolute top-1/2 -translate-y-1/2 left-0 w-[110%] h-[110%] scale-x-0 origin-left duration-500 ease-out group-hover:scale-x-100",
+                hoverBgClasses
+            )} />
+
+            <div className={clsx("relative z-10 flex items-center gap-3 duration-500", hoverTextClasses)}>
+                {Icon && <span className="flex items-center">{Icon}</span>}
+                <span className="leading-none">{children}</span>
+            </div>
         </button>
     );
 };
