@@ -1,20 +1,39 @@
 import ThemeButton from "../components/themeButton/themeButton";
 import { ShoppingBag, ArrowRight, User, Heart } from "@phosphor-icons/react";
+import Newsletter from "../components/newsletter/newsletter";
+import CategorySec from "../components/categorySec/categorySec";
 
 const HomePage = () => {
     return (
-        <main className="min-h-screen py-24 bg-light-bg selection:bg-primary selection:text-dark">
-            <div className="container">
-                <div className="flex flex-col items-center text-center mb-20">
-                    <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">New Design System</span>
-                    <h1 className="text-5xl md:text-8xl font-playfairDisplay mb-8 text-dark tracking-tight leading-none">The Signature Button</h1>
-                    <div className="w-32 h-1.5 bg-primary mb-10"></div>
-                    <p className="text-dark-65 max-w-2xl text-lg md:text-xl leading-relaxed font-roboto">
-                        Experience our redefined primary action component. Minimalist, bold, and engineered for high-conversion interactions.
-                    </p>
+        <main className="min-h-screen selection:bg-primary selection:text-dark">
+            {/* Hero Section */}
+            <section className="py-24 md:py-32 bg-white">
+                <div className="container">
+                    <div className="flex flex-col items-center text-center">
+                        <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">New Season Collection</span>
+                        <h1 className="text-5xl md:text-8xl font-playfairDisplay mb-8 text-dark tracking-tight leading-none max-w-4xl">
+                            Elegance in Every Detail
+                        </h1>
+                        <div className="w-32 h-1.5 bg-primary mb-10"></div>
+                        <p className="text-dark-65 max-w-2xl text-lg md:text-xl leading-relaxed font-roboto mb-10">
+                            Discover our curated selection of premium clothing and footwear. Engineered for style, crafted for comfort.
+                        </p>
+                        <ThemeButton variant="primary" icon={<ArrowRight size={20} weight="bold" />}>
+                            Explore Shop
+                        </ThemeButton>
+                    </div>
                 </div>
+            </section>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+            {/* Category Grid Section */}
+            <CategorySec />
+
+            {/* Newsletter Section */}
+            <Newsletter />
+
+            {/* Feature/Style Section */}
+            <section className="container pb-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto mt-24">
                     {/* Primary Variant */}
                     <div className="flex flex-col items-center p-12 bg-white shadow-box-shadow-1 hover:shadow-box-shadow-2 transition-all duration-700">
                         <span className="text-[10px] uppercase tracking-[0.3em] text-dark-40 font-bold mb-8 block">Primary Action</span>
@@ -57,7 +76,7 @@ const HomePage = () => {
                         <ThemeButton icon={<Heart size={18} weight="bold" />}>Wishlist</ThemeButton>
                     </div>
                 </div>
-            </div>
+            </section>
         </main>
     );
 }

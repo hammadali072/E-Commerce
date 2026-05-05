@@ -18,8 +18,11 @@
   --color-light-bg: #f5f3f4;
   --color-light-bg2: #d0d1d2;
 
-  --box-shadow-1: 0px 4px 25px rgba(0, 0, 0, 0.05);
-  --box-shadow-2: 0px 15px 40px rgba(0, 0, 0, 0.1);
+  --shadow-1: 0px 4px 25px rgba(0, 0, 0, 0.05);
+  --shadow-2: 0px 15px 40px rgba(0, 0, 0, 0.1);
+
+  --color-surface: #ffffff;
+  --color-surface-alt: #fcfcfc;
 }
 
 @layer base {
@@ -88,6 +91,13 @@
     max-width: 100%;
     height: auto;
     display: block;
+  }
+
+  input {
+    outline: none;
+  }
+  input:focus {
+    outline: none;
   }
 }
 
