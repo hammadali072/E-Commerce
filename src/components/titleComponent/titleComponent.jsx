@@ -9,7 +9,7 @@ const getHeadingClasses = (type) => {
         case 'h3':
             return 'lg:text-3xl text-2xl font-semibold leading-[120%]';
         case 'h4':
-            return 'md:text-2xl sm:text-xl text-lg font-semibold leading-[120%] tracking-[0.5px]';
+            return 'text-2xl font-semibold leading-[120%] tracking-[0.5px]';
         case 'h5':
             return 'text-xl font-semibold tracking-[0.5px]';
         case 'h6':

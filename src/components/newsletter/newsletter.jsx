@@ -1,6 +1,7 @@
 import ThemeButton from '../themeButton/themeButton';
-import newsletterImg from '../../assets/newsletter-img.svg';
 import TitleComponent from '../titleComponent/titleComponent';
+
+import newsletterImg from '../../assets/newsletter-img.svg';
 
 const Newsletter = () => {
     return (

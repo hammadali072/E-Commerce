@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import clsx from "clsx";
 
 const ThemeButton = ({ children, icon: Icon, variant = 'primary', className = '', ...props }) => {
@@ -44,6 +45,13 @@ const ThemeButton = ({ children, icon: Icon, variant = 'primary', className = ''
             </div>
         </button>
     );
+};
+
+ThemeButton.propTypes = {
+    children: PropTypes.node.isRequired,
+    icon: PropTypes.element,
+    variant: PropTypes.oneOf(['primary', 'secondary', 'outline']),
+    className: PropTypes.string
 };
 
 export default ThemeButton;

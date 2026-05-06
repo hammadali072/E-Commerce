@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+
 import TitleComponent from '../titleComponent/titleComponent';
 
 const SectionTitle = ({
@@ -10,7 +11,7 @@ const SectionTitle = ({
     descriptionClassName = ''
 }) => {
     return (
-        <div className={clsx("flex flex-col justify-center items-center mb-10 md:mb-14 lg:mb-20 text-center px-4 md:px-0", className)}>
+        <div className={clsx("flex flex-col mb-10 md:mb-14 lg:mb-20", className)}>
             <TitleComponent
                 type={headingLevel}
                 className="text-dark leading-[1.2] md:leading-tight"
@@ -18,7 +19,7 @@ const SectionTitle = ({
                 {title}
             </TitleComponent>
 
-            <div className="h-1 md:h-1.5 bg-primary mt-3 md:mt-4 mb-5 md:mb-8 w-12 md:w-24 transition-all duration-500" />
+            <div className="h-1 md:h-1.5 bg-primary mt-3 md:mt-4 mb-5 md:mb-8 duration-500 w-12 md:w-24" />
 
             {description && (
                 <TitleComponent
@@ -38,6 +39,7 @@ const SectionTitle = ({
 SectionTitle.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
+    align: PropTypes.oneOf(['left', 'center', 'right']),
     headingLevel: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
     className: PropTypes.string,
     descriptionClassName: PropTypes.string
