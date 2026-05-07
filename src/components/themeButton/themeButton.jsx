@@ -24,6 +24,11 @@ const ThemeButton = ({ children, icon: Icon, variant = 'primary', className = ''
             hoverBgClasses = 'bg-primary';
             hoverTextClasses = 'group-hover:text-white';
             break;
+        case 'dark':
+            variantClasses = 'bg-dark text-white';
+            hoverBgClasses = 'bg-primary';
+            hoverTextClasses = 'group-hover:text-dark';
+            break;
         default:
             variantClasses = 'bg-primary text-dark';
             hoverBgClasses = 'bg-secondary';

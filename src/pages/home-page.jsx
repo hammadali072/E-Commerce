@@ -1,35 +1,49 @@
-import { ArrowRightIcon } from "@phosphor-icons/react";
-
-import ThemeButton from "../components/themeButton/themeButton";
-import Newsletter from "../components/newsletter/newsletter";
+import Hero from "../components/hero/hero";
 import CategorySec from "../components/categorySec/categorySec";
+import HotSale from "../components/hotSale/hotSale";
 import FeaturedProducts from "../components/featuredProducts/featuredProducts";
+import PremiumCollection from "../components/premiumCollection/premiumCollection";
 import HighlightSection from "../components/highlightSection/highlightSection";
+import PromoBanner from "../components/promoBanner/promoBanner";
+import NewArrivals from "../components/newArrivals/newArrivals";
+import TopRated from "../components/topRated/topRated";
+import TrustBar from "../components/trustBar/trustBar";
+import Newsletter from "../components/newsletter/newsletter";
 
 const HomePage = () => {
     return (
         <main className="min-h-screen selection:bg-primary selection:text-dark">
-            <section className="py-24 md:py-32 bg-white">
-                <div className="container">
-                    <div className="flex flex-col items-center text-center">
-                        <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">New Season Collection</span>
-                        <h1 className="text-5xl md:text-8xl font-playfairDisplay mb-8 text-dark tracking-tight leading-none max-w-4xl">
-                            Elegance in Every Detail
-                        </h1>
-                        <div className="w-32 h-1.5 bg-primary mb-10"></div>
-                        <p className="text-dark-65 max-w-2xl text-lg md:text-xl leading-relaxed font-roboto mb-10">
-                            Discover our curated selection of premium clothing and footwear. Engineered for style, crafted for comfort.
-                        </p>
-                        <ThemeButton variant="primary" icon={<ArrowRightIcon size={20} weight="bold" />}>
-                            Explore Shop
-                        </ThemeButton>
-                    </div>
-                </div>
-            </section>
+            {/* Main Hero Section */}
+            <Hero />
 
+            {/* Category Grid Section */}
             <CategorySec />
+
+            {/* Premium Editorial Collection */}
+            <PremiumCollection />
+
+            {/* Hot Sale Section */}
+            <HotSale />
+
+            {/* Featured Products Section */}
             <FeaturedProducts />
+
+            {/* Brand Highlight Section */}
             <HighlightSection />
+
+            {/* Feature Promo Banner */}
+            <PromoBanner />
+
+            {/* New Arrivals Section */}
+            <NewArrivals />
+
+            {/* Top Rated Section */}
+            <TopRated />
+
+            {/* Trust Bar Section */}
+            <TrustBar />
+
+            {/* Newsletter Section */}
             <Newsletter />
         </main>
     );

@@ -5,10 +5,10 @@ import newsletterImg from '../../assets/newsletter-img.svg';
 
 const Newsletter = () => {
     return (
-        <section className="mt-12 sm:mt-[72px] lg:mt-32">
+        <section className="bg-[#f2f2f2]">
             <div className="container">
-                <div className="bg-[#f2f2f2] flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16 lg:py-10 lg:px-[72px] sm:p-9 p-5">
-                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16 lg:py-10 lg:px-[72px] sm:p-9 p-5">
+                    <div className="flex flex-col items-center lg:items-start">
                         <h2 className="text-3xl md:text-5xl font-bold text-dark leading-tight">
                             Subscribe to the Newsletter and Get Nice Offers
                         </h2>

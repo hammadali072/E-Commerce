@@ -6,64 +6,7 @@ import 'swiper/css/navigation';
 
 import SectionTitle from '../sectionTitle/sectionTitle';
 import ProductCard from './productCard';
-
-import formalShoesImg from '../../assets/formal-shoes-img.png';
-import joggersImg from '../../assets/jogger-img.png';
-import pantImg from '../../assets/pant-img.png';
-import shirtsImg from '../../assets/shirts-img.png';
-
-const products = [
-    {
-        id: 1,
-        name: 'Classic White Oxford Shirt',
-        category: 'Formal Shirts',
-        price: 45.00,
-        oldPrice: 60.00,
-        image: shirtsImg,
-        rating: 3.8,
-        badge: 'Bestseller'
-    },
-    {
-        id: 2,
-        name: 'Slim Fit Navy Chinos',
-        category: 'Formal Pant',
-        price: 55.00,
-        oldPrice: 75.00,
-        image: pantImg,
-        rating: 4.6,
-        badge: 'New'
-    },
-    {
-        id: 3,
-        name: 'Handcrafted Leather Oxfords',
-        category: 'Formal Shoes',
-        price: 120.00,
-        oldPrice: 150.00,
-        image: formalShoesImg,
-        rating: 4.9,
-        badge: 'Premium'
-    },
-    {
-        id: 4,
-        name: 'Urban Performance Joggers',
-        category: 'Joggers',
-        price: 35.00,
-        oldPrice: 50.00,
-        image: joggersImg,
-        rating: 4.5,
-        badge: 'Sale'
-    },
-    {
-        id: 5,
-        name: 'Swift-Step Modern Sneakers',
-        category: 'Sneakers',
-        price: 85.00,
-        oldPrice: 110.00,
-        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800',
-        rating: 4.7,
-        badge: 'Hot'
-    }
-];
+import { featuredProductsData } from '../../Data';
 
 const FeaturedProducts = () => {
     return (
@@ -111,7 +54,7 @@ const FeaturedProducts = () => {
                         }
                     }}
                 >
-                    {products.map((product) => (
+                    {featuredProductsData.map((product) => (
                         <SwiperSlide key={product.id}>
                             <ProductCard product={product} />
                         </SwiperSlide>

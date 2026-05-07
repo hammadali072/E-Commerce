@@ -7,42 +7,7 @@ import 'swiper/css';
 
 import TitleComponent from '../titleComponent/titleComponent';
 import SectionTitle from '../sectionTitle/sectionTitle';
-
-import formalShoesImg from '../../assets/formal-shoes-img.png';
-import joggersImg from '../../assets/jogger-img.png';
-import pantImg from '../../assets/pant-img.png';
-import shirtsImg from '../../assets/shirts-img.png';
-
-const categories = [
-    {
-        name: 'Formal Shirts',
-        img: shirtsImg,
-        path: '/clothing/shirts',
-        bgColor: 'bg-[#f7f0f9]',
-        label: 'Classic Look'
-    },
-    {
-        name: 'Formal Pant',
-        img: pantImg,
-        path: '/clothing/pants',
-        bgColor: 'bg-[#fdf9e6]',
-        label: 'Perfect Fit'
-    },
-    {
-        name: 'Formal Shoes',
-        img: formalShoesImg,
-        path: '/shoes/formal-shoes',
-        bgColor: 'bg-[#f0f4f7]',
-        label: 'Step into Style'
-    },
-    {
-        name: 'Joggers',
-        img: joggersImg,
-        path: '/shoes/joggers',
-        bgColor: 'bg-[#f9f0f0]',
-        label: 'Dynamic Comfort'
-    },
-];
+import { categoriesData } from '../../Data';
 
 const CategorySec = () => {
     return (
@@ -76,7 +41,7 @@ const CategorySec = () => {
                         }
                     }}
                 >
-                    {categories.map((cat, index) => (
+                    {categoriesData.map((cat, index) => (
                         <SwiperSlide key={index}>
                             <div
                                 className={clsx(
