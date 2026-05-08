@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import 'swiper/css';
 
 import SectionTitle from '../sectionTitle/sectionTitle';
-import ArrivalCard from './arrivalCard';
+import ProductCard from '../productCard/productCard';
 import { newArrivalsProducts } from '../../Data';
 
 const NewArrivals = () => {
@@ -14,7 +14,7 @@ const NewArrivals = () => {
 
     const filteredProducts = activeTab === 'All'
         ? newArrivalsProducts
-        : newArrivalsProducts.filter(p => p.category === activeTab);
+        : newArrivalsProducts.filter(p => p.category.toLowerCase() === activeTab.toLowerCase());
 
     return (
         <section className="py-20 md:py-32 bg-white">
@@ -76,7 +76,7 @@ const NewArrivals = () => {
                     >
                         {filteredProducts.map(product => (
                             <SwiperSlide key={product.id} className="h-auto">
-                                <ArrivalCard product={product} />
+                                <ProductCard product={product} />
                             </SwiperSlide>
                         ))}
                     </Swiper>

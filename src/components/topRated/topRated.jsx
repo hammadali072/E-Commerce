@@ -6,7 +6,7 @@ import { ArrowRightIcon } from '@phosphor-icons/react';
 import 'swiper/css';
 
 import SectionTitle from '../sectionTitle/sectionTitle';
-import RatedCard from './ratedCard';
+import ProductCard from '../productCard/productCard';
 import { topRatedProducts } from '../../Data';
 
 const TopRated = () => {
@@ -59,7 +59,7 @@ const TopRated = () => {
                     >
                         {topRatedProducts.map(product => (
                             <SwiperSlide key={product.id} className="h-auto">
-                                <RatedCard product={product} />
+                                <ProductCard product={product} />
                             </SwiperSlide>
                         ))}
                     </Swiper>

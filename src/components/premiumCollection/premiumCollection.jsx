@@ -4,7 +4,7 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
 import TitleComponent from '../titleComponent/titleComponent';
-import PremiumCard from './premiumCard';
+import ProductCard from '../productCard/productCard';
 import { premiumCollectionData } from '../../Data';
 
 const PremiumCollection = () => {
@@ -54,7 +54,7 @@ const PremiumCollection = () => {
                         >
                             {premiumCollectionData.map(product => (
                                 <SwiperSlide key={product.id} className="h-auto">
-                                    <PremiumCard product={product} />
+                                    <ProductCard product={product} variant="premium" />
                                 </SwiperSlide>
                             ))}
                         </Swiper>

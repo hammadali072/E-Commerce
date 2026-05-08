@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import SectionTitle from '../sectionTitle/sectionTitle';
-import SaleCard from './saleCard';
+import ProductCard from '../productCard/productCard';
 import { saleProductsData } from '../../Data';
 
 const CountdownBox = ({ value, label }) => (
@@ -101,7 +101,7 @@ const HotSale = () => {
                     >
                         {saleProductsData.map(product => (
                             <SwiperSlide key={product.id} className="h-auto">
-                                <SaleCard product={product} />
+                                <ProductCard product={product} />
                             </SwiperSlide>
                         ))}
                     </Swiper>

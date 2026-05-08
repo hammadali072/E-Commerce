@@ -41,9 +41,9 @@ const Hero = () => {
             >
                 {heroData.map((slide) => (
                     <SwiperSlide key={slide.id}>
-                        <div className={clsx("relative w-full h-full flex items-center duration-1000", slide.bgColor)}>
+                        <div className={clsx("relative size-full flex items-center duration-1000", slide.bgColor)}>
                             <div className="absolute inset-0 lg:hidden opacity-10 pointer-events-none">
-                                <img src={slide.image} alt="" className="w-full h-full object-cover" />
+                                <img src={slide.image} alt="" className="size-full object-cover" />
                             </div>
 
                             <div className="container">
@@ -96,14 +96,14 @@ const Hero = () => {
 
                                         <div className="relative hidden lg:block h-[70vh] xl:h-[80vh]">
                                             <div className="absolute inset-0 bg-primary/5 -rotate-3 scale-95 duration-1000 group-hover/slide:rotate-0 group-hover/slide:scale-100" />
-                                            <div className="relative w-full h-full overflow-hidden shadow-2xl">
+                                            <div className="relative size-full overflow-hidden shadow-2xl">
                                                 <img
                                                     src={slide.image}
                                                     alt={slide.heading}
-                                                    className="w-full h-full object-cover duration-1000 transform scale-105 group-hover/slide:scale-100 animate-fadeIn"
+                                                    className="size-full object-cover duration-1000 transform scale-105 group-hover/slide:scale-100 animate-fadeIn"
                                                 />
                                             </div>
-                                            <div className="absolute -bottom-6 -right-6 w-32 h-32 border-r-4 border-b-4 border-primary -z-10" />
+                                            <div className="absolute -bottom-6 -right-6 size-32 border-r-4 border-b-4 border-primary -z-10" />
                                         </div>
                                     </div>
                                 </div>

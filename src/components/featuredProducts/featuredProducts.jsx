@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import SectionTitle from '../sectionTitle/sectionTitle';
-import ProductCard from './productCard';
+import ProductCard from '../productCard/productCard';
 import { featuredProductsData } from '../../Data';
 
 const FeaturedProducts = () => {

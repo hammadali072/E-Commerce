@@ -38,7 +38,7 @@ const Newsletter = () => {
                         <img
                             src={newsletterImg}
                             alt="Newsletter Illustration"
-                            className="w-full h-full object-contain"
+                            className="size-full object-contain"
                         />
                     </div>
                 </div>

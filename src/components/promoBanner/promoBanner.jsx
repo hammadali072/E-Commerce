@@ -8,11 +8,11 @@ import promoImg from '../../assets/formal-shoes-img.png';
 
 const PromoBanner = () => {
     return (
-        <section className="w-full overflow-hidden">
-            <div className="flex flex-col lg:flex-row min-h-[500px] md:min-h-[600px]">
+        <section className="w-full lg:max-h-[calc(100vh-100px)] overflow-hidden">
+            <div className="flex flex-col lg:flex-row">
                 {/* Left Side: Content */}
                 <div className="w-full lg:w-1/2 bg-[#fdfbf7] flex items-center justify-center p-8 md:p-16 lg:p-24">
-                    <div className="max-w-xl flex flex-col items-start">
+                    <div className="flex flex-col items-start">
                         <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-6 px-4 py-2 border border-primary/20 bg-white shadow-sm">
                             Limited Offer
                         </span>
@@ -35,25 +35,16 @@ const PromoBanner = () => {
                     </div>
                 </div>
 
-                {/* Right Side: Image/Lifestyle */}
-                <div className="w-full lg:w-1/2 bg-dark flex items-center justify-center relative overflow-hidden group">
+                {/* Right Side: Product Showcase */}
+                <div className="w-full lg:w-1/2 bg-[#F8F8F8] flex items-center justify-center relative overflow-hidden group">
                     {/* Decorative Element */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary opacity-5 rounded-full blur-[120px] group-hover:opacity-10 duration-700 pointer-events-none" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[120%] bg-primary opacity-5 rounded-full blur-[120px] group-hover:opacity-10 duration-700 pointer-events-none" />
 
                     <img
-                        src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=1200"
-                        alt="Lifestyle Collection"
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 duration-1000 transition-all transform group-hover:scale-105"
+                        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=1200"
+                        alt="Executive Formal Shirt"
+                        className="size-full object-cover duration-1000 group-hover:scale-105"
                     />
-
-                    {/* Floating Product Layer */}
-                    <div className="absolute inset-0 flex items-center justify-center p-12 lg:p-24 pointer-events-none">
-                        <img
-                            src={promoImg}
-                            alt="Featured Product"
-                            className="w-3/4 h-auto object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)] transform -rotate-12 group-hover:rotate-0 duration-700 transition-all"
-                        />
-                    </div>
                 </div>
             </div>
         </section>
