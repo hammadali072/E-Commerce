@@ -1,5 +1,5 @@
-import ThemeButton from '../themeButton/themeButton';
 import TitleComponent from '../titleComponent/titleComponent';
+import ThemeButton from '../themeButton/themeButton';
 
 import newsletterImg from '../../assets/newsletter-img.svg';
 

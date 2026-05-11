@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -7,7 +6,7 @@ import 'swiper/css';
 
 import SectionTitle from '../sectionTitle/sectionTitle';
 import ProductCard from '../productCard/productCard';
-import { topRatedProducts } from '../../Data';
+import { TopRatedProducts } from '../../Data';
 
 const TopRated = () => {
     return (
@@ -21,13 +20,12 @@ const TopRated = () => {
                     />
                     <Link
                         to="/shop"
-                        className="self-start sm:self-center text-primary font-bold text-xs md:text-sm uppercase tracking-widest flex items-center gap-2 hover:gap-4 duration-300 border-b border-primary/20 pb-1"
+                        className="self-start sm:self-center text-primary font-bold text-xs md:text-sm uppercase tracking-widest flex items-center gap-2 border-b border-primary/20 pb-1 duration-300 hover:gap-4"
                     >
                         View All <ArrowRightIcon size={16} weight="bold" />
                     </Link>
                 </div>
 
-                {/* Swiper Slider */}
                 <div className="px-4 md:px-0">
                     <Swiper
                         modules={[Autoplay]}
@@ -57,7 +55,7 @@ const TopRated = () => {
                             }
                         }}
                     >
-                        {topRatedProducts.map(product => (
+                        {TopRatedProducts.map(product => (
                             <SwiperSlide key={product.id} className="h-auto">
                                 <ProductCard product={product} />
                             </SwiperSlide>

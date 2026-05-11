@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 
 import SectionTitle from '../sectionTitle/sectionTitle';
 import ProductCard from '../productCard/productCard';
-import { featuredProductsData } from '../../Data';
+import { FeaturedProductsData } from '../../Data';
 
 const FeaturedProducts = () => {
     return (
@@ -23,7 +23,7 @@ const FeaturedProducts = () => {
                         <button className="featured-prev p-2.5 md:p-3 border border-dark/10 hover:bg-primary hover:border-primary duration-300 cursor-pointer">
                             <CaretLeftIcon size={22} weight="bold" />
                         </button>
-                        <button className="featured-next p-2.5 md:p-3 border border-dark/10 hover:bg-primary hover:border-primary duration-300 cursor-pointer">
+                        <button className="featured-next p-2.5 md:p-3 border border-dark/10 hover:border-primary hover:border-primary duration-300 cursor-pointer">
                             <CaretRightIcon size={22} weight="bold" />
                         </button>
                     </div>
@@ -54,7 +54,7 @@ const FeaturedProducts = () => {
                         }
                     }}
                 >
-                    {featuredProductsData.map((product) => (
+                    {FeaturedProductsData.map((product) => (
                         <SwiperSlide key={product.id}>
                             <ProductCard product={product} />
                         </SwiperSlide>

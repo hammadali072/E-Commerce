@@ -1,11 +1,10 @@
-import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
 import TitleComponent from '../titleComponent/titleComponent';
 import ProductCard from '../productCard/productCard';
-import { premiumCollectionData } from '../../Data';
+import { PremiumCollectionData } from '../../Data';
 
 const PremiumCollection = () => {
     return (
@@ -52,7 +51,7 @@ const PremiumCollection = () => {
                                 }
                             }}
                         >
-                            {premiumCollectionData.map(product => (
+                            {PremiumCollectionData.map(product => (
                                 <SwiperSlide key={product.id} className="h-auto">
                                     <ProductCard product={product} variant="premium" />
                                 </SwiperSlide>

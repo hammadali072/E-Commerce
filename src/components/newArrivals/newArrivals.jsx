@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import clsx from 'clsx';
@@ -6,15 +6,15 @@ import 'swiper/css';
 
 import SectionTitle from '../sectionTitle/sectionTitle';
 import ProductCard from '../productCard/productCard';
-import { newArrivalsProducts } from '../../Data';
+import { NewArrivalsProducts } from '../../Data';
 
 const NewArrivals = () => {
     const [activeTab, setActiveTab] = useState('All');
     const tabs = ['All', 'Clothing', 'Shoes'];
 
     const filteredProducts = activeTab === 'All'
-        ? newArrivalsProducts
-        : newArrivalsProducts.filter(p => p.category.toLowerCase() === activeTab.toLowerCase());
+        ? NewArrivalsProducts
+        : NewArrivalsProducts.filter(p => p.category.toLowerCase() === activeTab.toLowerCase());
 
     return (
         <section className="py-20 md:py-32 bg-white">

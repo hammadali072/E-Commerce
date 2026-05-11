@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from "react-router-dom"
+
 import Header from "./components/header/header"
+import Footer from "./components/footer/footer"
+
 import HomePage from "./pages/home-page"
 import ShopPage from "./pages/shop-page"
 import ProductDetailPage from "./pages/product-detail-page"
-import Footer from "./components/footer/footer"
 
 function App() {
   const { pathname } = useLocation();

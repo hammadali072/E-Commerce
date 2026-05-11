@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 const getHeadingClasses = (type) => {
     switch (type) {
@@ -78,7 +79,7 @@ const TitleComponent = ({ type = 'p', size = 'base-normal', children, className 
     const Tag = type;
 
     return (
-        <Tag className={`${className} ${finalClass}`}>
+        <Tag className={clsx(finalClass, className)}>
             {children}
         </Tag>
     );

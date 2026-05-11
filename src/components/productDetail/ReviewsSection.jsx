@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import { StarIcon, XIcon } from '@phosphor-icons/react';
 import TitleComponent from '../titleComponent/titleComponent';
-import { ratingBreakdown, getMockReviews } from '../../Data';
+import { RatingBreakdown, GetMockReviews } from '../../Data';
 
-/* ─── Individual Review Card ─── */
 const ReviewCard = ({ review }) => {
     const [previewIndex, setPreviewIndex] = useState(null);
 
     const handleThumb = (idx) => {
-        // Toggle: clicking the active thumb collapses the preview
         setPreviewIndex(prev => (prev === idx ? null : idx));
     };
 
     return (
         <div className="py-6 md:py-10">
-            {/* User Meta Row */}
             <div className="flex items-start justify-between gap-4 mb-4 md:mb-5">
                 <div className="flex items-center gap-3 md:gap-4">
-                    <div className="size-9 md:size-11 rounded-full bg-amber/10 flex items-center justify-center text-amber font-black text-xs md:text-sm flex-shrink-0">
+                    <div className="size-9 md:size-11 bg-amber/10 flex items-center justify-center text-amber font-black text-xs md:text-sm flex-shrink-0">
                         {review.initials}
                     </div>
                     <div className="flex flex-col gap-0.5 md:gap-1">
@@ -38,26 +36,20 @@ const ReviewCard = ({ review }) => {
                 <span className="text-[10px] md:text-xs font-medium text-dark/30 flex-shrink-0 mt-1">{review.date}</span>
             </div>
 
-            {/* Review Content */}
-            <TitleComponent type="h5" className="text-dark mb-1.5 md:mb-2 text-sm md:text-base font-bold">
-                {review.title}
-            </TitleComponent>
-            <p className="text-dark/50 text-sm leading-relaxed mb-5">{review.comment}</p>
+            <TitleComponent type="h5" className="text-dark mb-1.5 md:mb-2 text-sm md:text-base font-bold">{review.title}</TitleComponent>
+            <TitleComponent size="small" className="text-dark/50 leading-relaxed mb-5">{review.comment}</TitleComponent>
 
-            {/* Review Image Thumbnails */}
             {review.images && review.images.length > 0 && (
                 <div className="flex flex-col gap-4">
-                    {/* Thumbnail Row */}
                     <div className="flex gap-3 flex-wrap">
                         {review.images.map((img, idx) => (
                             <button
                                 key={idx}
                                 onClick={() => handleThumb(idx)}
-                                className={`size-16 md:size-20 lg:size-24 bg-[#F5F5F5] border-2 overflow-hidden flex-shrink-0 transition-all duration-300 ${
-                                    previewIndex === idx
-                                        ? 'border-amber shadow-md'
-                                        : 'border-transparent hover:border-amber/40'
-                                }`}
+                                className={clsx(
+                                    "size-16 md:size-20 lg:size-24 bg-card-lighter border-2 overflow-hidden flex-shrink-0 duration-300",
+                                    previewIndex === idx ? 'border-amber shadow-md' : 'border-transparent hover:border-amber/40'
+                                )}
                                 title={`View image ${idx + 1}`}
                             >
                                 <img
@@ -69,13 +61,11 @@ const ReviewCard = ({ review }) => {
                         ))}
                     </div>
 
-                    {/* Inline Preview Panel */}
                     {previewIndex !== null && (
-                        <div className="relative bg-[#F5F5F5] border border-gray-100 flex items-center justify-center p-3 md:p-6 lg:p-8 animate-fadeIn">
-                            {/* Close Button */}
+                        <div className="relative bg-card-lighter border border-gray-100 flex items-center justify-center p-3 md:p-6 lg:p-8 animate-fadeIn">
                             <button
                                 onClick={() => setPreviewIndex(null)}
-                                className="absolute top-3 right-3 size-8 bg-white border border-gray-200 flex items-center justify-center text-dark/40 hover:text-dark hover:border-dark transition-all duration-300 z-10"
+                                className="absolute top-3 right-3 size-8 bg-white border border-gray-200 flex items-center justify-center text-dark/40 hover:text-dark hover:border-dark duration-300 z-10"
                                 title="Close preview"
                             >
                                 <XIcon size={16} weight="bold" />
@@ -106,7 +96,6 @@ ReviewCard.propTypes = {
     }).isRequired,
 };
 
-/* ─── Star Row helper ─── */
 const StarRow = ({ count }) => (
     <div className="flex gap-0.5">
         {[...Array(5)].map((_, i) => (
@@ -122,15 +111,13 @@ const StarRow = ({ count }) => (
 
 StarRow.propTypes = { count: PropTypes.number.isRequired };
 
-/* ─── Main Reviews Section ─── */
 const ReviewsSection = ({ product }) => {
-    const reviews = getMockReviews(product.image);
-    const totalReviews = ratingBreakdown.reduce((acc, curr) => acc + curr.count, 0);
+    const reviews = GetMockReviews(product.image);
+    const totalReviews = RatingBreakdown.reduce((acc, curr) => acc + curr.count, 0);
 
     return (
         <section className="w-full py-12 md:py-20 bg-white">
             <div className="container">
-                {/* Header */}
                 <div className="flex flex-col mb-10 md:mb-16">
                     <TitleComponent type="h2" className="text-2xl sm:text-3xl md:text-5xl font-bold text-dark mb-3 md:mb-4 tracking-tight">
                         Customer Reviews
@@ -138,9 +125,7 @@ const ReviewsSection = ({ product }) => {
                     <div className="w-20 h-1 bg-amber" />
                 </div>
 
-                {/* Rating Summary Block */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 mb-12 md:mb-20 p-5 sm:p-8 md:p-12 bg-[#FAFAFA]">
-                    {/* Overall Score */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 mb-12 md:mb-20 p-5 sm:p-8 md:p-12 bg-card-lighter">
                     <div className="flex flex-col items-center justify-center lg:items-start lg:border-r lg:border-gray-200">
                         <span className="text-5xl sm:text-7xl md:text-8xl font-black text-dark mb-3 md:mb-4 leading-none">
                             {product.rating?.toFixed(1) || '0.0'}
@@ -160,14 +145,13 @@ const ReviewsSection = ({ product }) => {
                         </span>
                     </div>
 
-                    {/* Bars Breakdown */}
                     <div className="flex flex-col justify-center gap-3">
-                        {ratingBreakdown.map((item) => (
+                        {RatingBreakdown.map((item) => (
                             <div key={item.stars} className="flex items-center gap-4">
                                 <StarRow count={item.stars} />
                                 <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
                                     <div
-                                        className="h-full bg-amber rounded-full transition-all duration-700"
+                                        className="h-full bg-amber rounded-full duration-700"
                                         style={{
                                             width: totalReviews > 0 ? `${(item.count / totalReviews) * 100}%` : '0%',
                                         }}
@@ -179,7 +163,6 @@ const ReviewsSection = ({ product }) => {
                     </div>
                 </div>
 
-                {/* Reviews List */}
                 <div className="flex flex-col divide-y divide-gray-100">
                     {reviews.length > 0 ? (
                         reviews.map((review) => <ReviewCard key={review.id} review={review} />)

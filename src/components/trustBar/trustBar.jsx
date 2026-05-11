@@ -5,7 +5,7 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
 import TitleComponent from '../titleComponent/titleComponent';
-import { trustFeatures } from '../../Data';
+import { TrustFeatures } from '../../Data';
 
 const TrustBar = () => {
     return (
@@ -30,7 +30,7 @@ const TrustBar = () => {
                         },
                     }}
                 >
-                    {trustFeatures.map((feature, index) => (
+                    {TrustFeatures.map((feature, index) => (
                         <SwiperSlide key={index}>
                             <div className="flex flex-col items-center text-center group py-2 md:py-4 px-4">
                                 <div className="text-dark mb-4 md:mb-6">
@@ -42,12 +42,7 @@ const TrustBar = () => {
                                     </div>
                                 </div>
 
-                                <TitleComponent
-                                    size="large-semibold"
-                                    className="text-dark font-medium tracking-tight mb-2 sm:mb-3"
-                                >
-                                    {feature.title}
-                                </TitleComponent>
+                                <TitleComponent size="large-semibold" className="text-dark font-medium tracking-tight mb-2 sm:mb-3">{feature.title}</TitleComponent>
                                 <TitleComponent size="small" className='text-dark-40 leading-relaxed max-w-[280px]'>{feature.desc}</TitleComponent>
                             </div>
                         </SwiperSlide>

@@ -13,7 +13,6 @@ import {
     ArrowUUpLeftIcon
 } from '@phosphor-icons/react';
 
-// Image Imports
 import formalShoesImg from './assets/formal-shoes-img.png';
 import joggersImg from './assets/jogger-img.png';
 import pantImg from './assets/pant-img.png';
@@ -42,41 +41,38 @@ export const MenuData = [
     { name: 'New Arrivals', path: '/new-arrivals' },
 ];
 
-// Categories Data
-export const categoriesData = [
+export const CategoriesData = [
     {
         name: 'Formal Shirts',
         img: shirtsImg,
         path: '/clothing/shirts',
-        bgColor: 'bg-[#f7f0f9]',
+        bgColor: 'bg-cat-shirts',
         label: 'Classic Look'
     },
     {
         name: 'Formal Pant',
         img: pantImg,
         path: '/clothing/pants',
-        bgColor: 'bg-[#fdf9e6]',
+        bgColor: 'bg-cat-pants',
         label: 'Perfect Fit'
     },
     {
         name: 'Formal Shoes',
         img: formalShoesImg,
         path: '/shoes/formal-shoes',
-        bgColor: 'bg-[#f0f4f7]',
+        bgColor: 'bg-cat-shoes',
         label: 'Step into Style'
     },
     {
         name: 'Joggers',
         img: joggersImg,
         path: '/shoes/joggers',
-        bgColor: 'bg-[#f9f0f0]',
+        bgColor: 'bg-cat-joggers',
         label: 'Dynamic Comfort'
     },
 ];
 
-// Master Product List - One Source of Truth
-export const allProducts = [
-    // SHIRTS
+export const AllProducts = [
     {
         id: 1,
         name: 'Classic White Oxford Shirt',
@@ -131,7 +127,6 @@ export const allProducts = [
         specs: { fit: 'regular', fabric: 'Organic Cotton' }
     },
 
-    // PANTS
     {
         id: 2,
         name: 'Slim Fit Navy Chinos',
@@ -184,8 +179,6 @@ export const allProducts = [
         stock: 0,
         specs: { fit: 'slim', fabric: 'Twill' }
     },
-
-    // FORMAL SHOES
     {
         id: 3,
         name: 'Handcrafted Leather Oxfords',
@@ -240,7 +233,6 @@ export const allProducts = [
         specs: { sole: 'rubber', closure: 'lace-up', upper: 'polished leather' }
     },
 
-    // SNEAKERS
     {
         id: 5,
         name: 'Swift-Step Modern Sneakers',
@@ -277,7 +269,6 @@ export const allProducts = [
         specs: { sole: 'cupsole', closure: 'lace-up', upper: 'leather' }
     },
 
-    // JOGGERS
     {
         id: 4,
         name: 'Urban Performance Joggers',
@@ -315,16 +306,14 @@ export const allProducts = [
     }
 ];
 
-// Derived Lists (Section Filters)
-export const featuredProductsData = allProducts.filter(p => p.tags.includes('featured'));
-export const saleProductsData = allProducts.filter(p => p.tags.includes('hot-sale'));
-export const newArrivalsProducts = allProducts.sort((a, b) => b.id - a.id).slice(0, 4);
-export const topRatedProducts = allProducts.sort((a, b) => b.rating - a.rating).slice(0, 4);
-export const premiumCollectionData = allProducts.filter(p => p.tags.includes('premium'));
-export const featuredProducts = featuredProductsData; // Alias for consistency
+export const FeaturedProductsData = AllProducts.filter(p => p.tags.includes('featured'));
+export const SaleProductsData = AllProducts.filter(p => p.tags.includes('hot-sale'));
+export const NewArrivalsProducts = AllProducts.sort((a, b) => b.id - a.id).slice(0, 4);
+export const TopRatedProducts = AllProducts.sort((a, b) => b.rating - a.rating).slice(0, 4);
+export const PremiumCollectionData = AllProducts.filter(p => p.tags.includes('premium'));
+export const FeaturedProducts = FeaturedProductsData;
 
-// Trust Bar Data
-export const trustFeatures = [
+export const TrustFeatures = [
     {
         icon: <TruckIcon />,
         title: 'Global Delivery',
@@ -342,15 +331,14 @@ export const trustFeatures = [
     }
 ];
 
-// Footer Data
-export const footerQuickLinks = [
+export const FooterQuickLinks = [
     { name: 'Home', path: '/' },
     { name: 'Shop', path: '/shop' },
     { name: 'New Arrivals', path: '/new-arrivals' },
     { name: 'Sale', path: '/sale' }
 ];
 
-export const footerCategoryLinks = [
+export const FooterCategoryLinks = [
     { name: 'Formal Shirts', path: '/clothing/shirts' },
     { name: 'Formal Pants', path: '/clothing/pants' },
     { name: 'Sneakers', path: '/shoes/sneakers' },
@@ -358,15 +346,14 @@ export const footerCategoryLinks = [
     { name: 'Formal Shoes', path: '/shoes/formal-shoes' }
 ];
 
-export const footerSocialLinks = [
+export const FooterSocialLinks = [
     { icon: <InstagramLogoIcon size={24} weight="bold" />, path: '#' },
     { icon: <FacebookLogoIcon size={24} weight="bold" />, path: '#' },
     { icon: <TwitterLogoIcon size={24} weight="bold" />, path: '#' },
     { icon: <YoutubeLogoIcon size={24} weight="bold" />, path: '#' }
 ];
 
-// Hero Slider Data
-export const heroData = [
+export const HeroData = [
     {
         id: 1,
         label: "FORMAL COLLECTION 2025",
@@ -402,7 +389,7 @@ export const heroData = [
     }
 ];
 
-export const sneakerSpotlightData = [
+export const SneakerSpotlightData = [
     {
         id: 1,
         name: 'Street Elite Low',
@@ -423,11 +410,10 @@ export const sneakerSpotlightData = [
     }
 ];
 
-/* ─── Product Detail Page — Static Data ─── */
 
-export const PRODUCT_TABS = ['Description', 'Specifications', 'Shipping & Returns'];
+export const ProductTabs = ['Description', 'Specifications', 'Shipping & Returns'];
 
-export const productHighlights = [
+export const ProductHighlights = [
     {
         icon: LightningIcon,
         title: 'Premium Materials',
@@ -445,7 +431,7 @@ export const productHighlights = [
     },
 ];
 
-export const shippingCards = [
+export const ShippingCards = [
     {
         icon: TruckIcon,
         title: 'Free Standard Delivery',
@@ -466,7 +452,7 @@ export const shippingCards = [
     },
 ];
 
-export const ratingBreakdown = [
+export const RatingBreakdown = [
     { stars: 5, count: 42 },
     { stars: 4, count: 12 },
     { stars: 3, count: 2 },
@@ -474,7 +460,7 @@ export const ratingBreakdown = [
     { stars: 1, count: 0 },
 ];
 
-export const getMockReviews = (productImage) => [
+export const GetMockReviews = (productImage) => [
     {
         id: 1,
         user: 'James R.',

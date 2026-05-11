@@ -1,20 +1,20 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { StarIcon, HeartIcon, EyeIcon, ShoppingBagIcon } from '@phosphor-icons/react';
+
 import TitleComponent from '../titleComponent/titleComponent';
 import ThemeButton from '../themeButton/themeButton';
+
 import { slugify } from '../../utils/slugify';
 
 const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
-    // Standardize badge logic across all data types
     const badgeText = product.badge || (product.isBestseller ? "Bestseller" : null);
     const isPromo = badgeText?.toLowerCase() === 'sale' || badgeText?.toLowerCase() === 'hot' || badgeText?.toLowerCase() === 'hot sale';
 
     if (variant === 'premium') {
         return (
-            <Link to={`/product/${slugify(product.name)}`} className="group relative flex flex-col bg-white border border-dark/5 p-6 duration-500 hover:shadow-xl hover:border-primary/20">
-                <div className="relative overflow-hidden mb-8 bg-[#FBFBFB]">
+            <Link to={`/product/${slugify(product.name)}`} className="relative flex flex-col bg-white border border-dark/5 p-6 duration-500 group hover:shadow-xl hover:border-primary/20">
+                <div className="relative overflow-hidden mb-8 bg-off-white">
                     <img
                         src={product.image}
                         alt={product.name}
@@ -51,8 +51,7 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
     if (layout === 'list') {
         return (
             <div className="group/card relative bg-white border border-gray-100 flex flex-col sm:flex-row p-4 md:p-6 duration-500 hover:shadow-2 hover:border-transparent overflow-hidden">
-                {/* Image Section */}
-                <Link to={`/product/${slugify(product.name)}`} className="relative w-full sm:size-40 md:size-48 lg:size-56 bg-[#f5f5f5] flex-shrink-0 flex items-center justify-center overflow-hidden aspect-square sm:aspect-auto">
+                <Link to={`/product/${slugify(product.name)}`} className="relative w-full sm:size-40 md:size-48 lg:size-56 bg-card-lighter flex-shrink-0 flex items-center justify-center overflow-hidden aspect-square sm:aspect-auto">
                     <img
                         src={product.image}
                         alt={product.name}
@@ -65,7 +64,6 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
                     )}
                 </Link>
 
-                {/* Info Section */}
                 <div className="flex flex-col flex-1 px-0 sm:px-6 md:px-8 py-4 sm:py-2">
                     <Link to={`/product/${slugify(product.name)}`} className="text-dark group-hover/card:text-primary duration-300 font-bold mb-2 text-lg md:text-xl block">
                         <TitleComponent type="h4" className="">
@@ -123,7 +121,7 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
     }
 
     return (
-        <div className="group relative bg-white border border-[#e5e7eb] flex flex-col p-3 md:p-4 duration-500 hover:shadow-2 hover:border-transparent overflow-hidden h-full">
+        <div className="group relative bg-white border border-grey-100 flex flex-col p-3 md:p-4 duration-500 hover:shadow-2 hover:border-transparent overflow-hidden h-full">
             {/* Merchandising Badge */}
             {badgeText && (
                 <span className="absolute top-0 left-0 z-10 px-3 py-1.5 bg-dark text-white text-[9px] md:text-[10px] font-semibold uppercase tracking-[0.2em]">
@@ -132,7 +130,7 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
             )}
 
             {/* Action Icons Toolbar */}
-            <div className="absolute top-3 right-3 md:top-4 md:right-4 z-20 flex flex-col translate-x-4 opacity-0 border border-dark/5 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+            <div className="absolute top-3 right-3 md:top-4 md:right-4 z-20 flex flex-col translate-x-4 opacity-0 border border-dark/5 group-hover:translate-x-0 group-hover:opacity-100 duration-300">
                 <button className="size-10 md:size-12 flex items-center justify-center bg-white text-dark/40 border-b border-dark/5 hover:bg-primary hover:text-dark duration-300">
                     <HeartIcon size={18} weight="bold" />
                 </button>
@@ -142,7 +140,7 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
             </div>
 
             {/* Image Area — navigates to product detail */}
-            <Link to={`/product/${slugify(product.name)}`} className="relative aspect-square bg-[#f5f5f5] mb-4 md:mb-6 flex items-center justify-center overflow-hidden block">
+            <Link to={`/product/${slugify(product.name)}`} className="relative aspect-square bg-card-lighter mb-4 md:mb-6 flex items-center justify-center overflow-hidden block">
                 <img
                     src={product.image}
                     alt={product.name}

@@ -26,7 +26,18 @@
   --color-card-subtle: #fcfcfc;
   --color-trust-bg: #fdfdfd;
   --color-card-dark: #1a1a1a;
-  --color-amber: #F5A623;
+  --color-amber: #f5a623;
+
+  /* Semantic Tokens */
+  --color-success-bg: #e8f5e9;
+  --color-success-text: #2e7d32;
+  --color-light-bg-alt: #f7f7f7;
+
+  /* Category-specific Surface Tokens */
+  --color-cat-shirts: #f7f0f9;
+  --color-cat-pants: #fdf9e6;
+  --color-cat-shoes: #f0f4f7;
+  --color-cat-joggers: #f9f0f0;
 
   --shadow-1: 0px 4px 25px rgba(0, 0, 0, 0.05);
   --shadow-2: 0px 15px 40px rgba(0, 0, 0, 0.1);
@@ -143,7 +154,7 @@
     }
 
     .hero-bullet-active {
-        background: #F5A623 !important;
+        background: var(--color-amber) !important;
         transform: scale(1.3);
     }
 

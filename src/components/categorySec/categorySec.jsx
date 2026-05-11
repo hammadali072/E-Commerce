@@ -7,7 +7,7 @@ import 'swiper/css';
 
 import TitleComponent from '../titleComponent/titleComponent';
 import SectionTitle from '../sectionTitle/sectionTitle';
-import { categoriesData } from '../../Data';
+import { CategoriesData } from '../../Data';
 
 const CategorySec = () => {
     return (
@@ -41,7 +41,7 @@ const CategorySec = () => {
                         }
                     }}
                 >
-                    {categoriesData.map((cat, index) => (
+                    {CategoriesData.map((cat, index) => (
                         <SwiperSlide key={index}>
                             <div
                                 className={clsx(

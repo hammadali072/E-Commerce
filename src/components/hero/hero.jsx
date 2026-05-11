@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination, EffectFade } from 'swiper/modules';
 import { CaretLeftIcon, CaretRightIcon, ArrowRightIcon } from '@phosphor-icons/react';
@@ -10,7 +10,7 @@ import 'swiper/css/effect-fade';
 
 import TitleComponent from '../titleComponent/titleComponent';
 import ThemeButton from '../themeButton/themeButton';
-import { heroData } from '../../Data';
+import { HeroData } from '../../Data';
 
 const Hero = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -39,7 +39,7 @@ const Hero = () => {
                 }}
                 className="h-full"
             >
-                {heroData.map((slide) => (
+                {HeroData.map((slide) => (
                     <SwiperSlide key={slide.id}>
                         <div className={clsx("relative size-full flex items-center duration-1000", slide.bgColor)}>
                             <div className="absolute inset-0 lg:hidden opacity-10 pointer-events-none">
@@ -115,7 +115,7 @@ const Hero = () => {
                 <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-8 right-4 sm:right-8 z-20 hidden md:flex justify-between pointer-events-none opacity-0 group-hover/slide:opacity-100 duration-500">
                     <button className={clsx(
                         "hero-prev pointer-events-auto size-12 sm:size-14 rounded-full border flex items-center justify-center duration-300 swiper-button-disabled:opacity-20 swiper-button-disabled:pointer-events-none backdrop-blur-sm",
-                        heroData[activeIndex]?.theme === 'dark'
+                        HeroData[activeIndex]?.theme === 'dark'
                             ? 'border-white/20 text-white hover:bg-white hover:text-dark'
                             : 'border-dark/10 text-dark hover:bg-dark hover:text-white'
                     )}>
@@ -124,7 +124,7 @@ const Hero = () => {
                     </button>
                     <button className={clsx(
                         "hero-next pointer-events-auto size-12 sm:size-14 rounded-full border flex items-center justify-center duration-300 swiper-button-disabled:opacity-20 swiper-button-disabled:pointer-events-none backdrop-blur-sm",
-                        heroData[activeIndex]?.theme === 'dark'
+                        HeroData[activeIndex]?.theme === 'dark'
                             ? 'border-white/20 text-white hover:bg-white hover:text-dark'
                             : 'border-dark/10 text-dark hover:bg-dark hover:text-white'
                     )}>

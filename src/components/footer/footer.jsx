@@ -4,12 +4,14 @@ import {
     PhoneIcon,
     MapPinIcon
 } from '@phosphor-icons/react';
+
+import TitleComponent from '../../components/titleComponent/titleComponent'
+
+import { FooterQuickLinks, FooterCategoryLinks, FooterSocialLinks } from '../../Data';
+
 import VisaIcon from '../../assets/visa.svg'
 import StripeIcon from '../../assets/stripe.svg'
 import PaypalIcon from '../../assets/paypal.svg'
-
-import TitleComponent from '../../components/titleComponent/titleComponent'
-import { footerQuickLinks, footerCategoryLinks, footerSocialLinks } from '../../Data';
 
 const Footer = () => {
 
@@ -23,7 +25,7 @@ const Footer = () => {
                         </Link>
                         <TitleComponent size="base" className="text-white/40 leading-relaxed mb-10 max-w-sm">Redefining the modern wardrobe with a curated selection of premium clothing and artisanal footwear. Excellence in every stitch.</TitleComponent>
                         <div className="flex gap-4">
-                            {footerSocialLinks.map((social, index) => (
+                            {FooterSocialLinks.map((social, index) => (
                                 <Link
                                     key={index}
                                     to={social.path}
@@ -38,7 +40,7 @@ const Footer = () => {
                     <div className="flex flex-col">
                         <TitleComponent type="h5" className='text-white mb-8'>Quick Links</TitleComponent>
                         <ul className="flex flex-col gap-4">
-                            {footerQuickLinks.map((link, index) => (
+                            {FooterQuickLinks.map((link, index) => (
                                 <li key={index}>
                                     <Link
                                         to={link.path}
@@ -54,7 +56,7 @@ const Footer = () => {
                     <div className="flex flex-col">
                         <TitleComponent type="h5" className='text-white mb-8'>Categories</TitleComponent>
                         <ul className="flex flex-col gap-4">
-                            {footerCategoryLinks.map((link, index) => (
+                            {FooterCategoryLinks.map((link, index) => (
                                 <li key={index}>
                                     <Link
                                         to={link.path}

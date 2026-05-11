@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
-    CaretLeftIcon,
-    CaretRightIcon,
     CaretDownIcon,
     GridFourIcon,
     ListIcon,
     StarIcon,
     XIcon
 } from '@phosphor-icons/react';
-import { allProducts } from '../Data';
-import InnerHero from '../components/innerHero/innerHero';
-import ThemeButton from '../components/themeButton/themeButton';
-import TitleComponent from '../components/titleComponent/titleComponent';
 
+import InnerHero from '../components/innerHero/innerHero';
+import TitleComponent from '../components/titleComponent/titleComponent';
 import ProductCard from '../components/productCard/productCard';
+
+import { AllProducts } from '../Data';
 
 const ShopPage = () => {
     const [priceRange, setPriceRange] = useState([0, 15000]);
@@ -23,12 +21,12 @@ const ShopPage = () => {
     const [selectedColor, setSelectedColor] = useState(null);
     const [selectedRatings, setSelectedRatings] = useState([]);
     const [sortBy, setSortBy] = useState("Best Selling");
-    const [filteredProducts, setFilteredProducts] = useState(allProducts);
+    const [filteredProducts, setFilteredProducts] = useState(AllProducts);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     // Filtering Logic
     useEffect(() => {
-        let result = [...allProducts];
+        let result = [...AllProducts];
 
         // Sub-Category Filter
         if (selectedCategories.length > 0 && !selectedCategories.includes("All")) {

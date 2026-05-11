@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
-import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 import SectionTitle from '../sectionTitle/sectionTitle';
 import ProductCard from '../productCard/productCard';
-import { saleProductsData } from '../../Data';
+import { SaleProductsData } from '../../Data';
 
 const CountdownBox = ({ value, label }) => (
     <div className="flex flex-col items-center flex-1 sm:flex-none min-w-[70px] md:min-w-[80px]">
@@ -99,7 +98,7 @@ const HotSale = () => {
                         }}
                         className="px-4"
                     >
-                        {saleProductsData.map(product => (
+                        {SaleProductsData.map(product => (
                             <SwiperSlide key={product.id} className="h-auto">
                                 <ProductCard product={product} />
                             </SwiperSlide>
