@@ -35,10 +35,15 @@ const ThemeButton = ({ children, icon: Icon, variant = 'primary', className = ''
             hoverTextClasses = 'group-hover:text-white';
     }
 
-    const combinedClasses = clsx(baseClasses, variantClasses, className).trim();
+    const combinedClasses = clsx(
+        baseClasses,
+        variantClasses,
+        'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
+        className
+    ).trim();
 
     return (
-        <button className={combinedClasses} {...props}>
+        <button className={combinedClasses} disabled={props.disabled} {...props}>
             <span className={clsx(
                 "absolute top-1/2 -translate-y-1/2 left-0 w-[110%] h-[110%] scale-x-0 origin-left duration-500 ease-out group-hover:scale-x-100",
                 hoverBgClasses

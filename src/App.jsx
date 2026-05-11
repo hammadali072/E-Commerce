@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom"
 import Header from "./components/header/header"
 import HomePage from "./pages/home-page"
 import ShopPage from "./pages/shop-page"
+import ProductDetailPage from "./pages/product-detail-page"
 import Footer from "./components/footer/footer"
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
+        <Route path="/product/:slug" element={<ProductDetailPage />} />
       </Routes>
       <Footer />
     </>

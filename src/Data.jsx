@@ -3,7 +3,12 @@ import {
     FacebookLogoIcon,
     TwitterLogoIcon,
     YoutubeLogoIcon,
+    LightningIcon,
+    RulerIcon,
+    StarIcon,
     TruckIcon,
+    ClockIcon,
+    ArrowClockwiseIcon,
     ShieldCheckIcon,
     ArrowUUpLeftIcon
 } from '@phosphor-icons/react';
@@ -87,6 +92,7 @@ export const allProducts = [
         colors: ['white', 'blue', 'gray'],
         sizes: ['S', 'M', 'L', 'XL'],
         sizeType: 'alpha',
+        stock: 20,
         specs: { fit: 'slim', collar: 'spread', fabric: '100% Cotton' }
     },
     {
@@ -103,6 +109,7 @@ export const allProducts = [
         colors: ['white', 'light-blue'],
         sizes: ['M', 'L', 'XL', 'XXL'],
         sizeType: 'alpha',
+        stock: 3,
         specs: { fit: 'tailored', collar: 'button-down', fabric: 'Egyptian Cotton' }
     },
     {
@@ -120,6 +127,7 @@ export const allProducts = [
         colors: ['white', 'navy'],
         sizes: ['S', 'M', 'L', 'XL'],
         sizeType: 'alpha',
+        stock: 0,
         specs: { fit: 'regular', fabric: 'Organic Cotton' }
     },
 
@@ -139,6 +147,7 @@ export const allProducts = [
         colors: ['navy', 'gray', 'black'],
         sizes: ['30', '32', '34', '36'],
         sizeType: 'waist',
+        stock: 15,
         specs: { fit: 'slim', fabric: 'Cotton Blend', rise: 'mid-rise' }
     },
     {
@@ -155,6 +164,7 @@ export const allProducts = [
         colors: ['charcoal', 'black'],
         sizes: ['32', '34', '36', '38'],
         sizeType: 'waist',
+        stock: 2,
         specs: { fit: 'custom', fabric: 'Italian Wool', rise: 'mid-rise' }
     },
     {
@@ -171,6 +181,7 @@ export const allProducts = [
         colors: ['tan', 'olive', 'black'],
         sizes: ['30', '32', '34', '36'],
         sizeType: 'waist',
+        stock: 0,
         specs: { fit: 'slim', fabric: 'Twill' }
     },
 
@@ -190,6 +201,7 @@ export const allProducts = [
         colors: ['brown', 'black'],
         sizes: ['40', '41', '42', '43'],
         sizeType: 'shoe',
+        stock: 8,
         specs: { sole: 'leather', closure: 'lace-up', upper: 'full-grain leather' }
     },
     {
@@ -206,6 +218,7 @@ export const allProducts = [
         colors: ['tan', 'mahogany'],
         sizes: ['41', '42', '43', '44'],
         sizeType: 'shoe',
+        stock: 4,
         specs: { sole: 'goodyear welt', closure: 'lace-up', upper: 'calfskin' }
     },
     {
@@ -223,6 +236,7 @@ export const allProducts = [
         colors: ['black', 'brown'],
         sizes: ['40', '41', '42', '43'],
         sizeType: 'shoe',
+        stock: 25,
         specs: { sole: 'rubber', closure: 'lace-up', upper: 'polished leather' }
     },
 
@@ -242,6 +256,7 @@ export const allProducts = [
         colors: ['red', 'black', 'white'],
         sizes: ['40', '41', '42', '43'],
         sizeType: 'shoe',
+        stock: 1,
         specs: { sole: 'rubber', closure: 'lace-up', upper: 'mesh' }
     },
     {
@@ -258,6 +273,7 @@ export const allProducts = [
         colors: ['white', 'cream'],
         sizes: ['39', '40', '41', '42'],
         sizeType: 'shoe',
+        stock: 12,
         specs: { sole: 'cupsole', closure: 'lace-up', upper: 'leather' }
     },
 
@@ -277,6 +293,7 @@ export const allProducts = [
         colors: ['gray', 'black', 'navy'],
         sizes: ['S', 'M', 'L', 'XL'],
         sizeType: 'alpha',
+        stock: 0,
         specs: { sole: 'rubber', closure: 'drawstring', upper: 'synthetic' }
     },
     {
@@ -293,6 +310,7 @@ export const allProducts = [
         colors: ['black', 'olive'],
         sizes: ['M', 'L', 'XL'],
         sizeType: 'alpha',
+        stock: 7,
         specs: { fabric: 'Polyester Blend', waistband: 'Elastic' }
     }
 ];
@@ -403,4 +421,91 @@ export const sneakerSpotlightData = [
         price: 110.00,
         image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=400'
     }
+];
+
+/* ─── Product Detail Page — Static Data ─── */
+
+export const PRODUCT_TABS = ['Description', 'Specifications', 'Shipping & Returns'];
+
+export const productHighlights = [
+    {
+        icon: LightningIcon,
+        title: 'Premium Materials',
+        desc: "Sourced from the world's most prestigious textile and leather suppliers.",
+    },
+    {
+        icon: RulerIcon,
+        title: 'Tailored Precision',
+        desc: 'Engineered with anatomical precision to ensure a flawless, comfortable fit.',
+    },
+    {
+        icon: StarIcon,
+        title: 'Enduring Quality',
+        desc: 'Reinforced construction techniques guarantee a lifetime of sophisticated wear.',
+    },
+];
+
+export const shippingCards = [
+    {
+        icon: TruckIcon,
+        title: 'Free Standard Delivery',
+        desc: 'Complimentary shipping on all orders over $100. Delivery in 5-7 business days via premium couriers.',
+        badge: '5-7 Business Days',
+    },
+    {
+        icon: ClockIcon,
+        title: 'Express Delivery',
+        desc: 'Select Express Shipping at checkout for priority processing. Guaranteed tracking on every shipment.',
+        badge: '2-3 Business Days',
+    },
+    {
+        icon: ArrowClockwiseIcon,
+        title: 'Hassle-Free Returns',
+        desc: 'Free returns within 30 days of purchase. Use the prepaid label included in your package.',
+        badge: '30-Day Window',
+    },
+];
+
+export const ratingBreakdown = [
+    { stars: 5, count: 42 },
+    { stars: 4, count: 12 },
+    { stars: 3, count: 2 },
+    { stars: 2, count: 0 },
+    { stars: 1, count: 0 },
+];
+
+export const getMockReviews = (productImage) => [
+    {
+        id: 1,
+        user: 'James R.',
+        initials: 'JR',
+        rating: 5,
+        date: 'Oct 12, 2024',
+        title: 'Outstanding Quality and Fit',
+        comment:
+            'The leather quality is exceptional. They felt comfortable right out of the box and the color matches the photos perfectly. Highly recommend for business formal attire.',
+        images: [productImage, productImage],
+    },
+    {
+        id: 2,
+        user: 'Michael S.',
+        initials: 'MS',
+        rating: 4,
+        date: 'Sep 28, 2024',
+        title: 'Very Stylish, Size up',
+        comment:
+            'Beautiful shoes, but they run slightly narrow. I had to exchange for a half size up. Once I got the right size, they\'re the best formal shoes I\'ve owned.',
+        images: null,
+    },
+    {
+        id: 3,
+        user: 'David W.',
+        initials: 'DW',
+        rating: 5,
+        date: 'Aug 15, 2024',
+        title: 'Premium Experience',
+        comment:
+            'From the packaging to the product itself, everything feels premium. Worth every penny for the handcrafted quality you receive.',
+        images: [productImage],
+    },
 ];

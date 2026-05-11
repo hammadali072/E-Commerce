@@ -1,0 +1,233 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import {
+    StarIcon,
+    ShoppingCartIcon,
+    HeartIcon,
+    MinusIcon,
+    PlusIcon
+} from '@phosphor-icons/react';
+import ThemeButton from '../themeButton/themeButton';
+import TitleComponent from '../titleComponent/titleComponent';
+
+const ProductInfo = ({ product }) => {
+    const [selectedColor, setSelectedColor] = useState(product.colors?.[0] || '');
+    const [selectedSize, setSelectedSize] = useState('');
+    const [quantity, setQuantity] = useState(1);
+
+    const discount = product.oldPrice
+        ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
+        : 0;
+
+    const stock = product.stock !== undefined ? product.stock : 20;
+    const isOutOfStock = stock === 0;
+
+    return (
+        <div className="w-full flex flex-col items-start">
+
+            {/* Breadcrumb */}
+            <nav className="flex flex-wrap items-center gap-1.5 text-dark/40 text-[9px] md:text-[10px] uppercase tracking-widest mb-3 md:mb-4">
+                <span>Home</span>
+                <span>/</span>
+                <span>{product.category}</span>
+                <span>/</span>
+                <span className="text-dark/60 font-bold">{product.subCategory}</span>
+            </nav>
+
+            {/* Product Title */}
+            <TitleComponent
+                type="h1"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-3 md:mb-4 leading-tight"
+            >
+                {product.name}
+            </TitleComponent>
+
+            {/* Rating Summary */}
+            <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-5 md:mb-8">
+                <div className="flex items-center gap-1.5">
+                    <div className="flex gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                            <StarIcon
+                                key={i}
+                                size={15}
+                                weight={i < Math.floor(product.rating) ? 'fill' : 'regular'}
+                                className="text-amber"
+                            />
+                        ))}
+                    </div>
+                    <span className="text-xs md:text-sm font-black text-dark ml-1">{product.rating}</span>
+                </div>
+                <span className="text-xs md:text-sm text-dark/40 font-medium">({product.reviewCount} reviews)</span>
+                {product.rating >= 4.5 && (
+                    <span className="px-2 md:px-3 py-1 bg-amber/10 text-amber text-[9px] md:text-[10px] font-bold uppercase tracking-widest">
+                        Top Rated
+                    </span>
+                )}
+            </div>
+
+            {/* Price Area */}
+            <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-8">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-black text-dark tracking-tight">
+                    ${product.price.toFixed(2)}
+                </span>
+                {product.oldPrice && (
+                    <div className="flex items-center gap-3">
+                        <span className="text-base md:text-lg text-dark/30 line-through font-medium">
+                            ${product.oldPrice.toFixed(2)}
+                        </span>
+                        <span className="px-3 py-1 bg-[#E8F5E9] text-[#2E7D32] text-[10px] md:text-xs font-bold">
+                            -{discount}% OFF
+                        </span>
+                    </div>
+                )}
+            </div>
+
+            {/* Stock Status */}
+            <div className="flex items-center gap-2 mb-8">
+                {(() => {
+                    if (stock === 0) {
+                        return (
+                            <>
+                                <div className="size-2 rounded-full bg-red-500" />
+                                <span className="text-[13px] md:text-sm font-medium text-red-500">Out of Stock</span>
+                            </>
+                        );
+                    } else if (stock > 0 && stock <= 5) {
+                        return (
+                            <>
+                                <div className="size-2 rounded-full bg-amber" />
+                                <span className="text-[13px] md:text-sm font-bold text-amber">Only {stock} Left</span>
+                                <span className="text-[11px] md:text-xs text-dark/30 ml-1 font-medium">Order soon</span>
+                            </>
+                        );
+                    } else {
+                        return (
+                            <>
+                                <div className="size-2 rounded-full bg-green-500" />
+                                <span className="text-[13px] md:text-sm font-bold text-green-600">In Stock</span>
+                                <span className="text-[11px] md:text-xs text-dark/30 ml-1 font-medium">Ready to ship in 24hrs</span>
+                            </>
+                        );
+                    }
+                })()}
+            </div>
+
+            {/* Variant Selectors */}
+            <div className="w-full flex flex-col gap-6 md:gap-8 mb-8 md:mb-10">
+
+                {/* Color Selector */}
+                <div className="flex flex-col gap-2 md:gap-3">
+                    <div className="flex items-center gap-2">
+                        <span className="text-xs md:text-sm font-bold text-dark uppercase tracking-widest">Color:</span>
+                        <span className="text-xs md:text-sm text-dark/40 capitalize">{selectedColor}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 md:gap-3">
+                        {product.colors?.map((color) => (
+                            <button
+                                key={color}
+                                onClick={() => setSelectedColor(color)}
+                                className={`size-7 md:size-8 border-2 transition-all duration-300 flex items-center justify-center ${selectedColor === color ? 'border-amber p-0.5' : 'border-transparent'
+                                    }`}
+                            >
+                                <div
+                                    className="size-full border border-dark/5"
+                                    style={{ backgroundColor: color === 'white' ? '#fff' : color === 'navy' ? '#000080' : color }}
+                                />
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Size Selector */}
+                <div className="flex flex-col gap-2 md:gap-3">
+                    <div className="flex items-center justify-between">
+                        <span className="text-xs md:text-sm font-bold text-dark uppercase tracking-widest">
+                            Size ({product.sizeType === 'shoe' ? 'EU' : product.sizeType === 'waist' ? 'Inches' : 'Alpha'}):
+                        </span>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 md:gap-2">
+                        {product.sizes?.map((size) => (
+                            <button
+                                key={size}
+                                onClick={() => setSelectedSize(size)}
+                                className={`h-9 md:h-11 min-w-[2.75rem] md:min-w-[3.5rem] px-3 md:px-4 flex items-center justify-center text-xs md:text-sm font-bold border duration-300 ${selectedSize === size
+                                    ? 'bg-dark text-white border-dark'
+                                    : 'bg-white text-dark/60 border-gray-200 hover:border-dark'
+                                    }`}
+                            >
+                                {size}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Actions Area */}
+            <div className={`w-full flex flex-col gap-3 md:gap-4 mb-6 md:mb-10 ${isOutOfStock ? 'opacity-50 pointer-events-none' : ''}`}>
+                {/* Quantity + Add to Cart row */}
+                <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+                    {/* Quantity Stepper */}
+                    <div className="flex items-center border border-gray-200 h-11 md:h-14 bg-white self-start sm:self-auto">
+                        <button
+                            onClick={() => setQuantity(q => Math.max(1, q - 1))}
+                            disabled={isOutOfStock}
+                            className="size-11 md:size-14 flex items-center justify-center text-dark/40 hover:text-amber duration-300 disabled:cursor-not-allowed"
+                        >
+                            <MinusIcon size={14} weight="bold" />
+                        </button>
+                        <input
+                            type="number"
+                            value={quantity}
+                            onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+                            disabled={isOutOfStock}
+                            className="w-10 md:w-12 text-center bg-transparent border-none focus:ring-0 font-bold text-dark text-sm disabled:cursor-not-allowed"
+                        />
+                        <button
+                            onClick={() => setQuantity(q => q + 1)}
+                            disabled={isOutOfStock}
+                            className="size-11 md:size-14 flex items-center justify-center text-dark/40 hover:text-amber duration-300 disabled:cursor-not-allowed"
+                        >
+                            <PlusIcon size={14} weight="bold" />
+                        </button>
+                    </div>
+
+                    <ThemeButton
+                        variant="dark"
+                        disabled={isOutOfStock}
+                        className="flex-1 h-11 md:h-14 text-[10px] md:text-sm tracking-[0.15em] md:tracking-[0.2em] font-bold uppercase disabled:opacity-50 disabled:cursor-not-allowed"
+                        icon={<ShoppingCartIcon size={18} weight="bold" />}
+                    >
+                        Add to Cart
+                    </ThemeButton>
+                </div>
+
+                {/* Wishlist */}
+                <ThemeButton
+                    variant="outline"
+                    disabled={isOutOfStock}
+                    className="w-full h-11 md:h-14 text-[10px] md:text-sm tracking-[0.15em] md:tracking-[0.2em] font-bold uppercase border-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    icon={<HeartIcon size={18} weight="bold" />}
+                >
+                    Add to Wishlist
+                </ThemeButton>
+            </div>
+        </div>
+    );
+};
+
+ProductInfo.propTypes = {
+    product: PropTypes.shape({
+        name: PropTypes.string,
+        category: PropTypes.string,
+        subCategory: PropTypes.string,
+        price: PropTypes.number,
+        oldPrice: PropTypes.number,
+        rating: PropTypes.number,
+        reviewCount: PropTypes.number,
+        colors: PropTypes.array,
+        sizes: PropTypes.array,
+        sizeType: PropTypes.string
+    }).isRequired
+};
+
+export default ProductInfo;

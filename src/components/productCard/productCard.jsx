@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { StarIcon, HeartIcon, EyeIcon, ShoppingBagIcon } from '@phosphor-icons/react';
 import TitleComponent from '../titleComponent/titleComponent';
 import ThemeButton from '../themeButton/themeButton';
+import { slugify } from '../../utils/slugify';
 
 const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
     // Standardize badge logic across all data types
@@ -11,7 +13,7 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
 
     if (variant === 'premium') {
         return (
-            <div className="group relative flex flex-col bg-white border border-dark/5 p-6 duration-500 hover:shadow-xl hover:border-primary/20">
+            <Link to={`/product/${slugify(product.name)}`} className="group relative flex flex-col bg-white border border-dark/5 p-6 duration-500 hover:shadow-xl hover:border-primary/20">
                 <div className="relative overflow-hidden mb-8 bg-[#FBFBFB]">
                     <img
                         src={product.image}
@@ -42,7 +44,7 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
                         Shop Now
                     </ThemeButton>
                 </div>
-            </div>
+            </Link>
         );
     }
 
@@ -50,7 +52,7 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
         return (
             <div className="group/card relative bg-white border border-gray-100 flex flex-col sm:flex-row p-4 md:p-6 duration-500 hover:shadow-2 hover:border-transparent overflow-hidden">
                 {/* Image Section */}
-                <div className="relative w-full sm:size-40 md:size-48 lg:size-56 bg-[#f5f5f5] flex-shrink-0 flex items-center justify-center overflow-hidden aspect-square sm:aspect-auto">
+                <Link to={`/product/${slugify(product.name)}`} className="relative w-full sm:size-40 md:size-48 lg:size-56 bg-[#f5f5f5] flex-shrink-0 flex items-center justify-center overflow-hidden aspect-square sm:aspect-auto">
                     <img
                         src={product.image}
                         alt={product.name}
@@ -61,13 +63,15 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
                             {badgeText}
                         </span>
                     )}
-                </div>
+                </Link>
 
                 {/* Info Section */}
                 <div className="flex flex-col flex-1 px-0 sm:px-6 md:px-8 py-4 sm:py-2">
-                    <TitleComponent type="h4" className="text-dark group-hover/card:text-primary duration-300 font-bold mb-2 text-lg md:text-xl">
-                        {product.name}
-                    </TitleComponent>
+                    <Link to={`/product/${slugify(product.name)}`} className="text-dark group-hover/card:text-primary duration-300 font-bold mb-2 text-lg md:text-xl block">
+                        <TitleComponent type="h4" className="">
+                            {product.name}
+                        </TitleComponent>
+                    </Link>
 
                     <div className="flex items-center gap-1.5 mb-3 md:mb-4">
                         <div className="flex gap-0.5">
@@ -137,17 +141,17 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
                 </button>
             </div>
 
-            {/* Image Area */}
-            <div className="relative aspect-square bg-[#f5f5f5] mb-4 md:mb-6 flex items-center justify-center overflow-hidden">
+            {/* Image Area — navigates to product detail */}
+            <Link to={`/product/${slugify(product.name)}`} className="relative aspect-square bg-[#f5f5f5] mb-4 md:mb-6 flex items-center justify-center overflow-hidden block">
                 <img
                     src={product.image}
                     alt={product.name}
                     className="size-[85%] object-contain drop-shadow-xl duration-700 group-hover:scale-105"
                 />
-            </div>
+            </Link>
 
-            {/* Product Information */}
-            <div className="flex flex-col gap-2 mt-auto">
+            {/* Product Information — navigates to product detail */}
+            <Link to={`/product/${slugify(product.name)}`} className="flex flex-col gap-2 mt-auto">
                 <TitleComponent type="h6" className="text-dark group-hover:text-primary duration-300 line-clamp-2 font-bold mb-1">
                     {product.name}
                 </TitleComponent>
@@ -180,7 +184,7 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
                         </span>
                     )}
                 </div>
-            </div>
+            </Link>
         </div>
     );
 };

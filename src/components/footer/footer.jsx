@@ -70,19 +70,19 @@ const Footer = () => {
                     <div className="flex flex-col">
                         <TitleComponent type="h5" className='text-white mb-8'>Contact Us</TitleComponent>
                         <ul className="flex flex-col gap-6">
-                            <li className="flex gap-4 group">
+                            <li className="flex gap-4 items-center group">
                                 <div className="bg-primary/10 size-11 flex items-center justify-center shrink-0">
                                     <EnvelopeIcon className='text-primary' size={22} />
                                 </div>
                                 <Link to="mailto:support@eshop.com" className="text-white/40 text-base group-hover:text-primary duration-300">support@eshop.com</Link>
                             </li>
-                            <li className="flex gap-4 group">
+                            <li className="flex gap-4 items-center group">
                                 <div className="bg-primary/10 size-11 flex items-center justify-center shrink-0">
                                     <PhoneIcon className='text-primary' size={22} />
                                 </div>
                                 <Link to="tel:+15550001234" className="text-white/40 text-base group-hover:text-primary duration-300">+1 (555) 000-1234</Link>
                             </li>
-                            <li className="flex gap-4 group">
+                            <li className="flex gap-4 items-center group">
                                 <div className="bg-primary/10 size-11 flex items-center justify-center shrink-0">
                                     <MapPinIcon className='text-primary' size={22} weight='bold' />
                                 </div>
