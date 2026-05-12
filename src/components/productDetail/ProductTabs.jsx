@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import TitleComponent from '../titleComponent/titleComponent';
-import { ProductTabs, ProductHighlights, ShippingCards } from '../../Data';
+import { ProductTabs as ProductTabsData, ProductHighlights, ShippingCards } from '../../Data';
 
 const ProductTabs = ({ product }) => {
     const [activeTab, setActiveTab] = useState('Description');
@@ -18,12 +18,12 @@ const ProductTabs = ({ product }) => {
         <section className="w-full py-12 md:py-16 lg:py-24 border-t border-gray-100">
             <div className="container">
                 <div className="flex gap-4 md:gap-8 lg:gap-12 mb-8 md:mb-12 border-b border-gray-100 overflow-x-auto scrollbar-hide">
-                    {ProductTabs.map((tab) => (
+                    {ProductTabsData.map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
                             className={clsx(
-                                "pb-3 md:pb-4 text-[10px] sm:text-xs md:text-sm lg:text-base font-bold uppercase tracking-[0.15em] md:tracking-[0.2em] relative transition-all duration-300 whitespace-nowrap flex-shrink-0",
+                                "pb-3 md:pb-4 text-[10px] sm:text-xs md:text-sm lg:text-base font-bold uppercase tracking-[0.15em] md:tracking-[0.2em] relative duration-300 whitespace-nowrap flex-shrink-0",
                                 activeTab === tab ? 'text-dark' : 'text-dark/40 hover:text-dark/60'
                             )}
                         >
@@ -77,7 +77,7 @@ const ProductTabs = ({ product }) => {
                         <div className="animate-fadeIn">
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
                                 {ShippingCards.map(({ icon: Icon, title, desc, badge }) => (
-                                    <div key={title} className="flex flex-col p-5 md:p-8 bg-card-lighter border border-gray-100 transition-all duration-300 hover:bg-white hover:border-primary">
+                                    <div key={title} className="flex flex-col p-5 md:p-8 bg-card-lighter border border-gray-100 duration-300 hover:bg-white hover:border-primary">
                                         <div className="size-11 md:size-14 bg-amber/10 flex items-center justify-center mb-4 md:mb-6">
                                             <Icon size={22} className="text-amber" weight="regular" />
                                         </div>

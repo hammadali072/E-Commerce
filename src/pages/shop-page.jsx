@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
     CaretDownIcon,
     GridFourIcon,
@@ -6,57 +7,84 @@ import {
     StarIcon,
     XIcon
 } from '@phosphor-icons/react';
+import clsx from 'clsx';
 
 import InnerHero from '../components/innerHero/innerHero';
 import TitleComponent from '../components/titleComponent/titleComponent';
 import ProductCard from '../components/productCard/productCard';
 
-import { AllProducts } from '../Data';
+import { AllProducts, pageHeroConfig } from '../Data';
 
 const ShopPage = () => {
+    const { pathname } = useLocation();
+    const heroConfig = pageHeroConfig[pathname] || pageHeroConfig['/shop'];
+
     const [priceRange, setPriceRange] = useState([0, 15000]);
     const [viewMode, setViewMode] = useState('grid');
     const [selectedSizes, setSelectedSizes] = useState([]);
-    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [selectedCategories, setSelectedCategories] = useState(() => {
+        const config = pageHeroConfig[pathname];
+        if (!config) return [];
+        if (config.filterCategories) return config.filterCategories;
+        if (config.filterCategory && config.filterCategory !== 'All'
+            && !['hot-sale', 'new-arrival'].includes(config.filterCategory)) {
+            return [config.filterCategory];
+        }
+        return [];
+    });
     const [selectedColor, setSelectedColor] = useState(null);
     const [selectedRatings, setSelectedRatings] = useState([]);
     const [sortBy, setSortBy] = useState("Best Selling");
     const [filteredProducts, setFilteredProducts] = useState(AllProducts);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    // Filtering Logic
+    useEffect(() => {
+        const config = pageHeroConfig[pathname];
+        if (!config) return;
+
+        handleClearAll();
+
+        if (config.filterCategories) {
+            setSelectedCategories(config.filterCategories);
+        } else if (config.filterCategory &&
+            config.filterCategory !== 'All' &&
+            !['hot-sale', 'new-arrival'].includes(config.filterCategory)) {
+            setSelectedCategories([config.filterCategory]);
+        }
+    }, [pathname]);
+
     useEffect(() => {
         let result = [...AllProducts];
 
-        // Sub-Category Filter
+        // Tag-based route filter (new-arrivals, sale)
+        const config = pageHeroConfig[pathname];
+        if (config?.filterCategory === 'hot-sale') {
+            result = result.filter(p => p.tags.includes('hot-sale'));
+        } else if (config?.filterCategory === 'new-arrival') {
+            result = result.filter(p => p.tags.includes('new-arrival'));
+        }
+
         if (selectedCategories.length > 0 && !selectedCategories.includes("All")) {
             result = result.filter(p => {
-                // Map the human-readable category name to the subCategory key
                 const subCatKey = p.subCategory.replace('-', ' ');
                 return selectedCategories.some(c => c.toLowerCase() === subCatKey || c.toLowerCase() === p.category);
             });
         }
 
-        // Price Filter
         result = result.filter(p => p.price >= priceRange[0] && p.price <= priceRange[1]);
 
-        // Color Filter
         if (selectedColor) {
             result = result.filter(p => p.colors?.includes(selectedColor.toLowerCase()));
         }
 
-        // Size Filter
         if (selectedSizes.length > 0) {
             result = result.filter(p => p.sizes?.some(s => selectedSizes.includes(s)));
         }
 
-        // Rating Filter
         if (selectedRatings.length > 0) {
             const minRating = Math.min(...selectedRatings);
             result = result.filter(p => p.rating >= minRating);
         }
-
-        // Sorting Logic
         if (sortBy === "Price: Low to High") {
             result.sort((a, b) => a.price - b.price);
         } else if (sortBy === "Latest") {
@@ -66,7 +94,7 @@ const ShopPage = () => {
         }
 
         setFilteredProducts(result);
-    }, [selectedCategories, priceRange, selectedColor, selectedSizes, selectedRatings, sortBy]);
+    }, [selectedCategories, priceRange, selectedColor, selectedSizes, selectedRatings, sortBy, pathname]);
 
     const handleClearAll = () => {
         setSelectedCategories([]);
@@ -131,29 +159,32 @@ const ShopPage = () => {
         { name: "navy", class: "bg-blue-900" },
         { name: "brown", class: "bg-amber-900" },
         { name: "gray", class: "bg-gray-500" },
-        { name: "tan", class: "bg-[#D2B48C]" }
+        { name: "tan", class: "bg-tan" }
     ];
 
     return (
-        <div className="bg-white min-h-screen">
+        <div className="min-h-screen">
             <InnerHero
-                title="Shop All Products"
-                subtitle="DISCOVER OUR COLLECTION"
-                breadcrumbs={[
-                    { label: "Home", path: "/" },
-                    { label: "Shop", path: "/shop", active: true }
-                ]}
+                title={heroConfig.title}
+                subtitle={heroConfig.subtitle}
+                breadcrumbs={heroConfig.breadcrumbs}
             />
 
-            <div className="container px-4 md:px-6">
+            <div className="container">
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 py-10 md:py-16 lg:py-20">
 
                     {/* Mobile Sidebar Overlay */}
                     <div
-                        className={`fixed inset-0 z-[100] duration-300 ${isSidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                        className={clsx(
+                            "fixed inset-0 z-[100] duration-300",
+                            isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+                        )}
                     >
                         <div className="absolute inset-0 bg-dark/40 backdrop-blur-sm" onClick={() => setIsSidebarOpen(false)} />
-                        <aside className={`absolute top-0 right-0 h-full w-[85%] max-w-sm bg-white shadow-2xl duration-500 transform p-6 md:p-8 overflow-y-auto ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                        <aside className={clsx(
+                            "absolute top-0 right-0 h-full w-[85%] max-w-sm bg-white shadow-2xl duration-500 transform p-6 md:p-8 overflow-y-auto",
+                            isSidebarOpen ? "translate-x-0" : "translate-x-full"
+                        )}>
                             <div className='flex items-center justify-between mb-8 pb-4 border-b border-gray-100'>
                                 <TitleComponent type="h3" className="text-dark !text-xl md:!text-2xl">Filters</TitleComponent>
                                 <button
@@ -215,7 +246,7 @@ const ShopPage = () => {
 
                     <main className="w-full lg:w-3/4 flex flex-col gap-6 md:gap-8">
 
-                        <div className="bg-[#F4F4F4] px-4 md:px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+                        <div className="bg-table-header px-4 md:px-6 py-3 flex flex-wrap items-center justify-between gap-4">
                             <div className="flex items-center gap-3 md:gap-4">
                                 <span className="hidden sm:inline-block text-sm md:text-base font-medium text-dark/60">Sort By:</span>
                                 <div className="relative">
@@ -246,14 +277,20 @@ const ShopPage = () => {
                                 <div className="flex items-center gap-2 md:gap-3">
                                     <button
                                         onClick={() => setViewMode('grid')}
-                                        className={`size-9 md:size-11 flex items-center justify-center duration-300 ${viewMode === 'grid' ? 'bg-[#1A1A1A] text-amber' : 'bg-white text-dark/40 hover:text-dark'}`}
+                                        className={clsx(
+                                            "size-9 md:size-11 flex items-center justify-center duration-300",
+                                            viewMode === 'grid' ? "bg-card-dark text-amber" : "bg-white text-dark/40 hover:text-dark"
+                                        )}
                                         title="Grid View"
                                     >
                                         <GridFourIcon size={20} weight="regular" />
                                     </button>
                                     <button
                                         onClick={() => setViewMode('list')}
-                                        className={`size-9 md:size-11 flex items-center justify-center duration-300 ${viewMode === 'list' ? 'bg-[#1A1A1A] text-amber' : 'bg-white text-dark/40 hover:text-dark'}`}
+                                        className={clsx(
+                                            "size-9 md:size-11 flex items-center justify-center duration-300",
+                                            viewMode === 'list' ? "bg-card-dark text-amber" : "bg-white text-dark/40 hover:text-dark"
+                                        )}
                                         title="List View"
                                     >
                                         <ListIcon size={20} weight="regular" />
@@ -263,13 +300,16 @@ const ShopPage = () => {
                         </div>
 
                         {/* Products Grid */}
-                        <div className={`grid gap-x-4 md:gap-x-6 gap-y-10 md:gap-y-12 transition-all duration-500 ease-in-out ${viewMode === 'grid' ? 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1'}`}>
+                        <div className={clsx(
+                            "grid gap-x-4 md:gap-x-6 gap-y-10 md:gap-y-12 duration-500 ease-in-out",
+                            viewMode === 'grid' ? "grid-cols-1 sm:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"
+                        )}>
                             {filteredProducts.length > 0 ? (
                                 filteredProducts.map((product) => (
                                     <ProductCard key={product.id} product={product} layout={viewMode} />
                                 ))
                             ) : (
-                                <div className="col-span-full py-16 md:py-20 text-center border border-dashed border-gray-200 bg-[#F9F9F9]">
+                                <div className="col-span-full py-16 md:py-20 text-center border border-dashed border-gray-200 bg-off-white">
                                     <p className="text-dark/40 font-medium italic mb-4 text-sm md:text-base px-4">No products match your current filters.</p>
                                     <button
                                         onClick={handleClearAll}
@@ -331,7 +371,7 @@ const SidebarContent = ({
         <div className="border border-gray-100 p-5 md:p-6 mb-6">
             <TitleComponent type="h5" className="text-dark mb-3 md:mb-4">Price</TitleComponent>
             <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
-                <div className="flex-1 flex items-center bg-[#F9F9F9] h-10 md:h-11 border border-transparent focus-within:border-gray-200 duration-300">
+                <div className="flex-1 flex items-center bg-off-white h-10 md:h-11 border border-transparent focus-within:border-gray-200 duration-300">
                     <div className="w-8 md:w-10 h-full flex items-center justify-center border-r border-gray-200">
                         <span className="text-[10px] md:text-xs font-black text-dark/40">$</span>
                     </div>
@@ -343,7 +383,7 @@ const SidebarContent = ({
                     />
                 </div>
                 <span className="text-dark/40 font-bold">-</span>
-                <div className="flex-1 flex items-center bg-[#F9F9F9] h-10 md:h-11 border border-transparent focus-within:border-gray-200 duration-300">
+                <div className="flex-1 flex items-center bg-off-white h-10 md:h-11 border border-transparent focus-within:border-gray-200 duration-300">
                     <div className="w-8 md:w-10 h-full flex items-center justify-center border-r border-gray-200">
                         <span className="text-[10px] md:text-xs font-black text-dark/40">$</span>
                     </div>
@@ -365,7 +405,11 @@ const SidebarContent = ({
                     <button
                         key={color.name}
                         onClick={() => setSelectedColor(color.name)}
-                        className={`size-5 rounded-sm ${color.class} relative ${selectedColor === color.name ? 'ring-2 ring-offset-2 ring-amber' : ''}`}
+                        className={clsx(
+                            "size-5 rounded-sm relative",
+                            color.class,
+                            selectedColor === color.name && "ring-2 ring-offset-2 ring-amber"
+                        )}
                     />
                 ))}
             </div>
@@ -411,7 +455,7 @@ const SidebarContent = ({
                         </div>
                         <div className="flex items-center gap-0.5 md:gap-1">
                             {[...Array(5)].map((_, i) => (
-                                <StarIcon key={i} size={14} weight="fill" className={i < stars ? "text-amber" : "text-gray-200"} />
+                                <StarIcon key={i} size={14} weight="fill" className={clsx(i < stars ? "text-amber" : "text-gray-200")} />
                             ))}
                         </div>
                         <span className="text-[10px] md:text-xs font-bold text-dark/40 ml-auto">{stars.toFixed(1)}</span>

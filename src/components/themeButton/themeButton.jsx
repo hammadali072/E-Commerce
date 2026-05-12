@@ -1,7 +1,17 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from "clsx";
+import { ArrowRightIcon, TrashIcon, ShoppingBagIcon, HeartIcon, CaretRightIcon } from '@phosphor-icons/react';
 
-const ThemeButton = ({ children, icon: Icon, variant = 'primary', className = '', ...props }) => {
+const IconMap = {
+    'ArrowRightIcon': ArrowRightIcon,
+    'TrashIcon': TrashIcon,
+    'ShoppingBagIcon': ShoppingBagIcon,
+    'HeartIcon': HeartIcon,
+    'CaretRightIcon': CaretRightIcon
+};
+
+const ThemeButton = ({ children, icon, iconPosition = 'right', variant = 'primary', className = '', ...props }) => {
     let variantClasses = '';
     let hoverBgClasses = '';
     let hoverTextClasses = '';
@@ -42,6 +52,26 @@ const ThemeButton = ({ children, icon: Icon, variant = 'primary', className = ''
         className
     ).trim();
 
+    // Determine icon to render
+    const renderIcon = () => {
+        if (!icon) return null;
+        
+        let IconComponent = null;
+        if (typeof icon === 'string') {
+            IconComponent = IconMap[icon];
+        } else if (typeof icon === 'function' || (typeof icon === 'object' && icon.$$typeof)) {
+            // It's a component or an element
+            if (React.isValidElement(icon)) return icon;
+            IconComponent = icon;
+        }
+
+        if (!IconComponent) return null;
+        
+        return <IconComponent size={18} weight={icon === 'TrashIcon' ? "regular" : "bold"} className="duration-300" />;
+    };
+
+    const iconElement = renderIcon();
+
     return (
         <button className={combinedClasses} disabled={props.disabled} {...props}>
             <span className={clsx(
@@ -49,9 +79,10 @@ const ThemeButton = ({ children, icon: Icon, variant = 'primary', className = ''
                 hoverBgClasses
             )} />
 
-            <div className={clsx("relative z-10 flex items-center gap-3 duration-500", hoverTextClasses)}>
-                {Icon && <span className="flex items-center">{Icon}</span>}
+            <div className={clsx("relative z-10 flex items-center gap-2 duration-500", hoverTextClasses)}>
+                {iconElement && iconPosition === 'left' && <span className="flex items-center">{iconElement}</span>}
                 <span className="leading-none">{children}</span>
+                {iconElement && iconPosition === 'right' && <span className="flex items-center">{iconElement}</span>}
             </div>
         </button>
     );
@@ -59,9 +90,11 @@ const ThemeButton = ({ children, icon: Icon, variant = 'primary', className = ''
 
 ThemeButton.propTypes = {
     children: PropTypes.node.isRequired,
-    icon: PropTypes.element,
-    variant: PropTypes.oneOf(['primary', 'secondary', 'outline']),
-    className: PropTypes.string
+    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),
+    iconPosition: PropTypes.oneOf(['left', 'right']),
+    variant: PropTypes.oneOf(['primary', 'secondary', 'outline', 'dark']),
+    className: PropTypes.string,
+    disabled: PropTypes.bool
 };
 
 export default ThemeButton;

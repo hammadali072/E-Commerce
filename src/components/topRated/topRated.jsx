@@ -10,7 +10,7 @@ import { TopRatedProducts } from '../../Data';
 
 const TopRated = () => {
     return (
-        <section className="py-20 md:py-32 bg-[#fcfcfc]">
+        <section className="py-20 md:py-32 bg-surface-alt">
             <div className="container">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 md:mb-16 gap-8">
                     <SectionTitle

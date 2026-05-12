@@ -5,7 +5,7 @@ import newsletterImg from '../../assets/newsletter-img.svg';
 
 const Newsletter = () => {
     return (
-        <section className="bg-[#f2f2f2]">
+        <section className="bg-newsletter-bg">
             <div className="container">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16 lg:py-10 lg:px-[72px] sm:p-9 p-5">
                     <div className="flex flex-col items-center lg:items-start">

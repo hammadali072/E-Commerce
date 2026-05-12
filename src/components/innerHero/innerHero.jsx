@@ -1,10 +1,11 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CaretRightIcon } from '@phosphor-icons/react';
 
 const InnerHero = ({ title, subtitle, breadcrumbs }) => {
     return (
-        <section className="relative py-20 md:py-26 w-full bg-[#111111] flex items-center justify-center overflow-hidden border-b border-amber/30">
+        <section className="relative py-20 md:py-26 w-full bg-dark-deep flex items-center justify-center overflow-hidden border-b border-amber/30">
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
                 style={{ backgroundImage: 'linear-gradient(45deg, #ffffff 25%, transparent 25%, transparent 75%, #ffffff 75%, #ffffff), linear-gradient(45deg, #ffffff 25%, transparent 25%, transparent 75%, #ffffff 75%, #ffffff)', backgroundSize: '20px 20px', backgroundPosition: '0 0, 10px 10px' }}
             />

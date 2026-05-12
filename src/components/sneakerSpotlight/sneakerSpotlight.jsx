@@ -5,7 +5,7 @@ import ThemeButton from '../themeButton/themeButton';
 
 const SneakerSpotlight = () => {
     return (
-        <section className="bg-[#f5f5f5] overflow-hidden">
+        <section className="bg-card-lighter overflow-hidden">
             <div className="container-fluid !p-0">
                 <div className="flex flex-col lg:flex-row items-stretch min-h-[600px] lg:min-h-[800px]">
 
@@ -18,7 +18,7 @@ const SneakerSpotlight = () => {
                         <div className="absolute inset-0 bg-dark/5" />
                     </div>
 
-                    <div className="w-full lg:w-1/2 flex items-center justify-center py-20 px-6 sm:px-12 lg:px-24 xl:px-32 bg-[#F5F5F5]">
+                    <div className="w-full lg:w-1/2 flex items-center justify-center py-20 px-6 sm:px-12 lg:px-24 xl:px-32 bg-card-lighter">
                         <div className="flex flex-col items-start w-full">
                             <span className="text-amber font-bold tracking-[0.4em] uppercase text-xs mb-6">Fresh Kicks</span>
 

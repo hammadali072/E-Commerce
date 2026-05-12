@@ -15,7 +15,7 @@ const HighlightSection = () => {
                     {/* Image Side - Responsive Aspect Ratio */}
                     <div className="relative group order-2 lg:order-1">
                         <div className="absolute -inset-2 md:-inset-4 border border-primary/20 duration-500 group-hover:inset-0 pointer-events-none" />
-                        <div className="aspect-[4/5] bg-[#1A1A1A] flex items-center justify-center p-6 lg:p-12 relative overflow-hidden">
+                        <div className="aspect-[4/5] bg-card-dark flex items-center justify-center p-6 lg:p-12 relative overflow-hidden">
                             <img
                                 src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1000"
                                 alt="Premium Collection"

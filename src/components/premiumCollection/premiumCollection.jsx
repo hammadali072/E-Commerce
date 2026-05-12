@@ -8,7 +8,7 @@ import { PremiumCollectionData } from '../../Data';
 
 const PremiumCollection = () => {
     return (
-        <section className="relative py-20 md:py-32 bg-[#fbfbfb] overflow-hidden">
+        <section className="relative py-20 md:py-32 bg-card-subtle overflow-hidden">
             <div className="absolute -top-24 -left-24 size-96 bg-primary/5 rounded-full blur-[100px]" />
             <div className="absolute -bottom-24 -right-24 size-96 bg-primary/5 rounded-full blur-[100px]" />
 

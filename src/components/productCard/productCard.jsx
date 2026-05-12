@@ -1,13 +1,33 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { StarIcon, HeartIcon, EyeIcon, ShoppingBagIcon } from '@phosphor-icons/react';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 
 import TitleComponent from '../titleComponent/titleComponent';
 import ThemeButton from '../themeButton/themeButton';
-
+import { useWishlist } from '../../context/WishlistContext';
+import { useCart } from '../../context/CartContext';
 import { slugify } from '../../utils/slugify';
 
 const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
+    const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
+    const { addToCart, isInCart } = useCart();
+    const wishlisted = isInWishlist(product.id);
+    const inCart = isInCart(product.id);
+
+    const handleWishlistToggle = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        wishlisted ? removeFromWishlist(product.id) : addToWishlist(product);
+    };
+
+    const handleAddToCart = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const stock = product.stock !== undefined ? product.stock : 20;
+        if (stock > 0) addToCart(product);
+    };
+
     const badgeText = product.badge || (product.isBestseller ? "Bestseller" : null);
     const isPromo = badgeText?.toLowerCase() === 'sale' || badgeText?.toLowerCase() === 'hot' || badgeText?.toLowerCase() === 'hot sale';
 
@@ -104,13 +124,24 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
                         </div>
 
                         <div className="flex gap-2 w-full xs:w-auto">
-                            <button className="size-11 flex-shrink-0 flex items-center justify-center bg-gray-50 text-dark/40 hover:bg-primary hover:text-dark duration-300 border border-gray-100">
-                                <HeartIcon size={20} weight="bold" />
+                            <button
+                                onClick={handleWishlistToggle}
+                                className="size-11 flex-shrink-0 flex items-center justify-center bg-gray-50 text-dark/40 hover:bg-primary hover:text-dark duration-300 border border-gray-100"
+                            >
+                                <HeartIcon
+                                    size={20}
+                                    weight="bold"
+                                    className={clsx(wishlisted ? "text-amber" : "text-dark/40")}
+                                />
                             </button>
                             <button className="size-11 flex-shrink-0 flex items-center justify-center bg-gray-50 text-dark/40 hover:bg-primary hover:text-dark duration-300 border border-gray-100">
                                 <EyeIcon size={20} weight="bold" />
                             </button>
-                            <ThemeButton variant="primary">
+                            <ThemeButton 
+                                variant="primary"
+                                onClick={handleAddToCart}
+                                disabled={(product.stock !== undefined ? product.stock : 20) === 0}
+                            >
                                 Add to Cart
                             </ThemeButton>
                         </div>
@@ -131,10 +162,23 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
 
             {/* Action Icons Toolbar */}
             <div className="absolute top-3 right-3 md:top-4 md:right-4 z-20 flex flex-col translate-x-4 opacity-0 border border-dark/5 group-hover:translate-x-0 group-hover:opacity-100 duration-300">
-                <button className="size-10 md:size-12 flex items-center justify-center bg-white text-dark/40 border-b border-dark/5 hover:bg-primary hover:text-dark duration-300">
-                    <HeartIcon size={18} weight="bold" />
+                <button
+                    onClick={handleWishlistToggle}
+                    className="size-10 md:size-12 flex items-center justify-center bg-white text-dark/40 border-b border-dark/5 hover:bg-primary hover:text-dark duration-300"
+                >
+                    <HeartIcon
+                        size={18}
+                        weight="bold"
+                        className={clsx(wishlisted ? "text-amber" : "text-dark/40")}
+                    />
                 </button>
-                <button className="size-10 md:size-12 flex items-center justify-center bg-white text-dark/40 hover:bg-primary hover:text-dark duration-300">
+                <button 
+                    onClick={handleAddToCart}
+                    className={clsx(
+                        "size-10 md:size-12 flex items-center justify-center bg-white border-dark/5 hover:bg-primary hover:text-dark duration-300",
+                        inCart ? "text-amber" : "text-dark/40"
+                    )}
+                >
                     <ShoppingBagIcon size={18} weight="bold" />
                 </button>
             </div>

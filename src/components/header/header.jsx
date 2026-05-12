@@ -3,9 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { ShoppingBagIcon, HeartIcon, UserIcon, ListIcon, XIcon, CaretDownIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 import clsx from 'clsx';
 
+import { useWishlist } from '../../context/WishlistContext';
+import { useCart } from '../../context/CartContext';
+
 import { MenuData } from '../../Data';
 
 const Header = () => {
+    const { items: wishlistItems } = useWishlist();
+    const { getItemCount } = useCart();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
     const [isSearchCategoriesOpen, setIsSearchCategoriesOpen] = useState(false);
@@ -239,13 +244,13 @@ const Header = () => {
                             <Link to="/wishlist" className="relative text-dark hover:text-primary duration-300">
                                 <HeartIcon size={24} className="sm:size-7" />
                                 <span className="absolute -top-1.5 -right-1.5 size-4 sm:size-5 bg-primary text-dark text-[9px] sm:text-[10px] font-bold flex items-center justify-center rounded-full border-2 border-white">
-                                    0
+                                    {wishlistItems.length}
                                 </span>
                             </Link>
                             <Link to="/cart" className="relative text-dark hover:text-primary duration-300">
                                 <ShoppingBagIcon size={24} className="sm:size-7" />
                                 <span className="absolute -top-1.5 -right-1.5 size-4 sm:size-5 bg-primary text-dark text-[9px] sm:text-[10px] font-bold flex items-center justify-center rounded-full border-2 border-white">
-                                    0
+                                    {getItemCount()}
                                 </span>
                             </Link>
                             <Link to="/profile" className="text-dark hover:text-primary duration-300">

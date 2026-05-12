@@ -373,7 +373,7 @@ export const HeroData = [
         primaryBtn: "Shop Shoes",
         secondaryBtn: "Explore All",
         image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&q=80&w=1200",
-        bgColor: "bg-[#FDF8F2]",
+        bgColor: "bg-cat-beige",
         theme: "light"
     },
     {
@@ -384,7 +384,7 @@ export const HeroData = [
         primaryBtn: "Shop Sale Now",
         secondaryBtn: "See All Deals",
         image: "https://images.unsplash.com/photo-1505022610485-0249ba5b3675?auto=format&fit=crop&q=80&w=1200",
-        bgColor: "bg-[#1A1A1A]",
+        bgColor: "bg-card-dark",
         theme: "dark"
     }
 ];
@@ -495,3 +495,110 @@ export const GetMockReviews = (productImage) => [
         images: [productImage],
     },
 ];
+
+export const pageHeroConfig = {
+    '/shop': {
+        subtitle: 'DISCOVER OUR COLLECTION',
+        title: 'Shop All Products',
+        breadcrumbs: [
+            { label: 'Home', path: '/' },
+            { label: 'Shop', path: '/shop', active: true }
+        ],
+        filterCategory: 'All'
+    },
+    '/clothing': {
+        subtitle: 'EXPLORE CLOTHING',
+        title: 'Clothing Collection',
+        breadcrumbs: [
+            { label: 'Home', path: '/' },
+            { label: 'Shop', path: '/shop' },
+            { label: 'Clothing', path: '/clothing', active: true }
+        ],
+        filterCategory: null,
+        filterCategories: ['Shirts', 'Pants']
+    },
+    '/clothing/shirts': {
+        subtitle: 'CLASSIC LOOK',
+        title: 'Formal Shirts Collection',
+        breadcrumbs: [
+            { label: 'Home', path: '/' },
+            { label: 'Shop', path: '/shop' },
+            { label: 'Clothing', path: '/clothing' },
+            { label: 'Shirts', path: '/clothing/shirts', active: true }
+        ],
+        filterCategory: 'Shirts'
+    },
+    '/clothing/pants': {
+        subtitle: 'PERFECT FIT',
+        title: 'Formal Pants Collection',
+        breadcrumbs: [
+            { label: 'Home', path: '/' },
+            { label: 'Shop', path: '/shop' },
+            { label: 'Clothing', path: '/clothing' },
+            { label: 'Pants', path: '/clothing/pants', active: true }
+        ],
+        filterCategory: 'Pants'
+    },
+    '/shoes': {
+        subtitle: 'STEP INTO STYLE',
+        title: 'Shoes Collection',
+        breadcrumbs: [
+            { label: 'Home', path: '/' },
+            { label: 'Shop', path: '/shop' },
+            { label: 'Shoes', path: '/shoes', active: true }
+        ],
+        filterCategory: null,
+        filterCategories: ['Formal Shoes', 'Sneakers', 'Joggers']
+    },
+    '/shoes/formal-shoes': {
+        subtitle: 'STEP INTO STYLE',
+        title: 'Formal Shoes Collection',
+        breadcrumbs: [
+            { label: 'Home', path: '/' },
+            { label: 'Shop', path: '/shop' },
+            { label: 'Shoes', path: '/shoes' },
+            { label: 'Formal Shoes', path: '/shoes/formal-shoes', active: true }
+        ],
+        filterCategory: 'Formal Shoes'
+    },
+    '/shoes/sneakers': {
+        subtitle: 'FRESH KICKS',
+        title: 'Sneakers Collection',
+        breadcrumbs: [
+            { label: 'Home', path: '/' },
+            { label: 'Shop', path: '/shop' },
+            { label: 'Shoes', path: '/shoes' },
+            { label: 'Sneakers', path: '/shoes/sneakers', active: true }
+        ],
+        filterCategory: 'Sneakers'
+    },
+    '/shoes/joggers': {
+        subtitle: 'DYNAMIC COMFORT',
+        title: 'Joggers Collection',
+        breadcrumbs: [
+            { label: 'Home', path: '/' },
+            { label: 'Shop', path: '/shop' },
+            { label: 'Shoes', path: '/shoes' },
+            { label: 'Joggers', path: '/shoes/joggers', active: true }
+        ],
+        filterCategory: 'Joggers'
+    },
+    '/new-arrivals': {
+        subtitle: 'JUST DROPPED',
+        title: 'New Arrivals',
+        breadcrumbs: [
+            { label: 'Home', path: '/' },
+            { label: 'New Arrivals', path: '/new-arrivals', active: true }
+        ],
+        filterCategory: 'new-arrival'
+    },
+    '/sale': {
+        subtitle: 'LIMITED TIME OFFER',
+        title: 'Sale Collection',
+        breadcrumbs: [
+            { label: 'Home', path: '/' },
+            { label: 'Sale', path: '/sale', active: true }
+        ],
+        filterCategory: 'hot-sale'
+    }
+};

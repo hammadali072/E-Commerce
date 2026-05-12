@@ -11,7 +11,7 @@ const PromoBanner = () => {
         <section className="w-full lg:max-h-[calc(100vh-100px)] overflow-hidden">
             <div className="flex flex-col lg:flex-row">
                 {/* Left Side: Content */}
-                <div className="w-full lg:w-1/2 bg-[#fdfbf7] flex items-center justify-center p-8 md:p-16 lg:p-24">
+                <div className="w-full lg:w-1/2 bg-cream flex items-center justify-center p-8 md:p-16 lg:p-24">
                     <div className="flex flex-col items-start">
                         <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-6 px-4 py-2 border border-primary/20 bg-white shadow-sm">
                             Limited Offer
@@ -36,7 +36,7 @@ const PromoBanner = () => {
                 </div>
 
                 {/* Right Side: Product Showcase */}
-                <div className="w-full lg:w-1/2 bg-[#F8F8F8] flex items-center justify-center relative overflow-hidden group">
+                <div className="w-full lg:w-1/2 bg-card-light flex items-center justify-center relative overflow-hidden group">
                     {/* Decorative Element */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[120%] bg-primary opacity-5 rounded-full blur-[120px] group-hover:opacity-10 duration-700 pointer-events-none" />
 
