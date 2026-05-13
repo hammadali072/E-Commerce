@@ -16,11 +16,11 @@ const ReviewCard = ({ review }) => {
         <div className="py-6 md:py-10">
             <div className="flex items-start justify-between gap-4 mb-4 md:mb-5">
                 <div className="flex items-center gap-3 md:gap-4">
-                    <div className="size-9 md:size-11 bg-amber/10 flex items-center justify-center text-amber font-black text-xs md:text-sm flex-shrink-0">
+                    <div className="size-9 md:size-11 bg-amber/10 flex items-center justify-center text-amber font-semibold text-xs md:text-sm flex-shrink-0">
                         {review.initials}
                     </div>
                     <div className="flex flex-col gap-0.5 md:gap-1">
-                        <span className="text-xs md:text-sm font-bold text-dark">{review.user}</span>
+                        <span className="text-xs md:text-sm font-semibold text-dark">{review.user}</span>
                         <div className="flex gap-0.5">
                             {[...Array(5)].map((_, i) => (
                                 <StarIcon
@@ -36,7 +36,7 @@ const ReviewCard = ({ review }) => {
                 <span className="text-[10px] md:text-xs font-medium text-dark/30 flex-shrink-0 mt-1">{review.date}</span>
             </div>
 
-            <TitleComponent type="h5" className="text-dark mb-1.5 md:mb-2 text-sm md:text-base font-bold">{review.title}</TitleComponent>
+            <TitleComponent type="h5" className="text-dark mb-1.5 md:mb-2 text-sm md:text-base font-semibold">{review.title}</TitleComponent>
             <TitleComponent size="small" className="text-dark/50 leading-relaxed mb-5">{review.comment}</TitleComponent>
 
             {review.images && review.images.length > 0 && (
@@ -127,7 +127,7 @@ const ReviewsSection = ({ product }) => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 mb-12 md:mb-20 p-5 sm:p-8 md:p-12 bg-card-lighter">
                     <div className="flex flex-col items-center justify-center lg:items-start lg:border-r lg:border-gray-200">
-                        <span className="text-5xl sm:text-7xl md:text-8xl font-black text-dark mb-3 md:mb-4 leading-none">
+                        <span className="text-5xl sm:text-7xl md:text-8xl font-bold text-dark mb-3 md:mb-4 leading-none">
                             {product.rating?.toFixed(1) || '0.0'}
                         </span>
                         <div className="flex gap-1 mb-4">
@@ -140,7 +140,7 @@ const ReviewsSection = ({ product }) => {
                                 />
                             ))}
                         </div>
-                        <span className="text-sm text-dark/40 font-bold uppercase tracking-[0.2em]">
+                        <span className="text-xs text-dark/30 font-semibold uppercase tracking-widest">
                             Based on {product.reviewCount || 0} reviews
                         </span>
                     </div>
@@ -157,7 +157,7 @@ const ReviewsSection = ({ product }) => {
                                         }}
                                     />
                                 </div>
-                                <span className="text-xs font-bold text-dark/40 w-6 text-right">{item.count}</span>
+                                <span className="text-xs font-semibold text-dark/40 w-6 text-right">{item.count}</span>
                             </div>
                         ))}
                     </div>

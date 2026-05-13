@@ -17,12 +17,14 @@ import SectionTitle from '../components/sectionTitle/sectionTitle';
 import ProductCard from '../components/productCard/productCard';
 import ThemeButton from '../components/themeButton/themeButton';
 import { useWishlist } from '../context/WishlistContext';
+import { useCart } from '../context/CartContext';
 import { slugify } from '../utils/slugify';
 
 import { AllProducts } from '../Data';
 
 const WishlistPage = () => {
     const { items, clearWishlist, removeFromWishlist } = useWishlist();
+    const { addToCart } = useCart();
 
     const recommendedProducts = useMemo(() => {
         return AllProducts
@@ -139,6 +141,7 @@ const WishlistPage = () => {
                                                             variant="dark"
                                                             className="text-sm tracking-widest uppercase px-6"
                                                             disabled={isOutOfStock}
+                                                            onClick={() => addToCart(item)}
                                                             icon={<ShoppingCartIcon size={14} weight="bold" />}
                                                         >
                                                             Add to Cart
@@ -187,6 +190,7 @@ const WishlistPage = () => {
                                                 variant="dark"
                                                 className="w-full sm:flex-1 !py-3.5 text-xs tracking-widest uppercase"
                                                 disabled={isOutOfStock}
+                                                onClick={() => addToCart(item)}
                                                 icon={<ShoppingCartIcon size={16} weight="bold" />}
                                             >
                                                 Add to Cart

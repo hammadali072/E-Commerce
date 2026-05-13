@@ -4,11 +4,14 @@ import { Routes, Route, useLocation } from "react-router-dom"
 import Header from "./components/header/header"
 import Footer from "./components/footer/footer"
 
-import HomePage from "./pages/home-page"
-import ShopPage from "./pages/shop-page"
-import WishlistPage from "./pages/wishlist-page"
-import ProductDetailPage from "./pages/product-detail-page"
-import CartPage from "./pages/cart-page"
+import HomePage from "./pages/homePage"
+import ShopPage from "./pages/shopPage"
+import WishlistPage from "./pages/wishlistPage"
+import ProductDetailPage from "./pages/productDetailPage"
+import CartPage from "./pages/cartPage"
+import CheckoutPage from "./pages/checkoutPage"
+import OrderSuccessPage from "./pages/orderSuccessPage"
+import ProfilePage from "./pages/profilePage"
 
 function App() {
   const { pathname } = useLocation();
@@ -41,6 +44,9 @@ function App() {
         <Route path="/sale" element={<ShopPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/order-success" element={<OrderSuccessPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/product/:slug" element={<ProductDetailPage />} />
       </Routes>
       <Footer />

@@ -59,9 +59,11 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
 
                     <ThemeButton
                         variant="dark"
+                        onClick={handleAddToCart}
+                        disabled={(product.stock !== undefined ? product.stock : 20) === 0}
                         className="w-full bg-dark hover:bg-primary hover:text-dark py-4 text-xs tracking-[0.2em] uppercase"
                     >
-                        Shop Now
+                        {(product.stock !== undefined ? product.stock : 20) === 0 ? "Out of Stock" : "Add to Cart"}
                     </ThemeButton>
                 </div>
             </Link>

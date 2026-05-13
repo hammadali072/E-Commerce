@@ -40,7 +40,10 @@ const CartPage = () => {
         couponCode,
         couponDiscount,
         applyCoupon,
-        removeCoupon
+        removeCoupon,
+        shippingMethod,
+        setShippingMethod,
+        shippingFee
     } = useCart();
 
     const { addToWishlist, isInWishlist } = useWishlist();
@@ -109,11 +112,11 @@ const CartPage = () => {
                                     <table className="w-full text-left border-collapse">
                                         <thead>
                                             <tr className="bg-table-header">
-                                                <th className="py-4 px-6 text-xs font-bold uppercase tracking-widest text-dark/40">Product</th>
-                                                <th className="py-4 px-6 text-xs font-bold uppercase tracking-widest text-dark/40">Details</th>
-                                                <th className="py-4 px-6 text-xs font-bold uppercase tracking-widest text-dark/40 text-center">Quantity</th>
-                                                <th className="py-4 px-6 text-xs font-bold uppercase tracking-widest text-dark/40">Price</th>
-                                                <th className="py-4 px-6 text-xs font-bold uppercase tracking-widest text-dark/40 text-center">Actions</th>
+                                                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-widest text-dark/40">Product</th>
+                                                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-widest text-dark/40">Details</th>
+                                                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-widest text-dark/40 text-center">Quantity</th>
+                                                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-widest text-dark/40">Price</th>
+                                                <th className="py-4 px-6 text-xs font-semibold uppercase tracking-widest text-dark/40 text-center">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -134,19 +137,19 @@ const CartPage = () => {
                                                         <td className="p-4">
                                                             <div className="flex flex-col gap-1.5 max-w-[200px] xl:max-w-[280px]">
                                                                 <Link to={`/product/${slugify(item.name)}`}>
-                                                                    <TitleComponent type="h4" className="text-dark hover:text-amber duration-300 font-bold font-playfairDisplay leading-tight !mb-0 text-sm md:text-base lg:text-lg">
+                                                                    <TitleComponent type="h4" className="text-dark hover:text-amber duration-300 font-semibold font-playfairDisplay leading-tight !mb-0 text-sm md:text-base lg:text-lg">
                                                                         {item.name}
                                                                     </TitleComponent>
                                                                 </Link>
-                                                                <span className="inline-block self-start px-2 py-0.5 bg-amber/10 text-amber text-[10px] uppercase tracking-widest font-bold">
+                                                                <span className="inline-block self-start px-2 py-0.5 bg-amber/10 text-amber text-xs uppercase tracking-widest font-semibold">
                                                                     {item.subCategory}
                                                                 </span>
                                                                 {(item.selectedSize || item.selectedColor) && (
                                                                     <div className="flex items-center gap-3 mt-1">
-                                                                        {item.selectedSize && <span className="text-[10px] text-dark/40 font-bold uppercase tracking-wider">Size: {item.selectedSize}</span>}
+                                                                        {item.selectedSize && <span className="text-[10px] text-dark/40 font-semibold uppercase tracking-wider">Size: {item.selectedSize}</span>}
                                                                         {item.selectedColor && (
                                                                             <div className="flex items-center gap-1.5">
-                                                                                <span className="text-[10px] text-dark/40 font-bold uppercase tracking-wider">Color:</span>
+                                                                                <span className="text-[10px] text-dark/40 font-semibold uppercase tracking-wider">Color:</span>
                                                                                 <div className="size-2.5 rounded-full border border-dark/10" style={{ backgroundColor: item.selectedColor }} />
                                                                             </div>
                                                                         )}
@@ -163,7 +166,7 @@ const CartPage = () => {
                                                                 >
                                                                     <MinusIcon size={12} weight="bold" />
                                                                 </button>
-                                                                <span className="w-10 text-center font-bold text-dark text-sm">{item.quantity}</span>
+                                                                <span className="w-10 text-center font-semibold text-dark text-sm">{item.quantity}</span>
                                                                 <button
                                                                     onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                                                     disabled={item.quantity >= stock}
@@ -175,9 +178,9 @@ const CartPage = () => {
                                                         </td>
                                                         <td className="p-4">
                                                             <div className="flex flex-col gap-0.5 min-w-[100px]">
-                                                                <span className="text-[10px] text-dark/40 font-bold uppercase tracking-wider">${item.price.toFixed(2)} ea</span>
+                                                                <span className="text-[10px] text-dark/40 font-semibold uppercase tracking-wider">${item.price.toFixed(2)} ea</span>
                                                                 <span className="text-lg lg:text-xl font-bold text-dark tracking-tight">${linePrice.toFixed(2)}</span>
-                                                                {savings > 0 && <span className="text-[10px] text-green-600 font-bold uppercase tracking-wider">Save ${savings.toFixed(2)}</span>}
+                                                                {savings > 0 && <span className="text-[10px] text-green-600 font-semibold uppercase tracking-wider">Save ${savings.toFixed(2)}</span>}
                                                             </div>
                                                         </td>
                                                         <td className="p-4">
@@ -220,7 +223,7 @@ const CartPage = () => {
                                                     </Link>
                                                     <div className="flex-1 flex flex-col min-w-0">
                                                         <Link to={`/product/${slugify(item.name)}`}>
-                                                            <TitleComponent type="h4" className="text-dark font-bold font-playfairDisplay leading-tight !mb-1 text-base sm:text-lg line-clamp-2">
+                                                            <TitleComponent type="h4" className="text-dark font-semibold font-playfairDisplay leading-tight !mb-1 text-base sm:text-lg line-clamp-2">
                                                                 {item.name}
                                                             </TitleComponent>
                                                         </Link>
@@ -237,7 +240,7 @@ const CartPage = () => {
                                                         >
                                                             <MinusIcon size={12} weight="bold" />
                                                         </button>
-                                                        <span className="w-10 text-center font-bold text-dark text-sm">{item.quantity}</span>
+                                                        <span className="w-10 text-center font-semibold text-dark text-sm">{item.quantity}</span>
                                                         <button
                                                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                                             disabled={item.quantity >= stock}
@@ -256,14 +259,14 @@ const CartPage = () => {
                                                             )}
                                                         >
                                                             <HeartIcon size={20} weight={isInWishlist(item.id) ? "fill" : "bold"} />
-                                                            <span className="sm:hidden ml-2 font-bold uppercase text-[10px] tracking-widest">To Wishlist</span>
+                                                            <span className="sm:hidden ml-2 font-semibold uppercase text-xs tracking-widest">To Wishlist</span>
                                                         </button>
                                                         <button
                                                             onClick={() => removeFromCart(item.id)}
                                                             className="flex-1 sm:size-10 h-11 border border-gray-200 flex items-center justify-center text-dark/40"
                                                         >
                                                             <XIcon size={20} weight="bold" />
-                                                            <span className="sm:hidden ml-2 font-bold uppercase text-[10px] tracking-widest">Remove</span>
+                                                            <span className="sm:hidden ml-2 font-semibold uppercase text-xs tracking-widest">Remove</span>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -275,25 +278,25 @@ const CartPage = () => {
 
                             {/* Right Column — Order Summary */}
                             <div className="xl:w-1/3">
-                                <div className="lg:sticky lg:top-24 h-fit bg-white border border-gray-100 p-6 md:p-8">
-                                    <TitleComponent type="h4" className="text-dark font-bold font-playfairDisplay mb-8 text-xl md:text-2xl">
+                                <div className="lg:sticky lg:top-24 h-fit bg-white border border-gray-100 p-4 sm:p-6 md:p-8">
+                                    <TitleComponent type="h4" className="text-dark font-bold font-playfairDisplay mb-5 md:mb-8 text-xl md:text-2xl">
                                         Order Summary
                                     </TitleComponent>
 
-                                    <div className="flex flex-col gap-3 mb-8 pb-8 border-b border-gray-100">
+                                    <div className="flex flex-col gap-2 md:gap-3 mb-6 md:mb-8 pb-6 md:pb-8 border-b border-gray-100">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm md:text-base text-dark/60">Subtotal</span>
+                                            <span className="text-sm md:text-base text-dark/60 font-semibold uppercase tracking-wider">Subtotal</span>
                                             <span className="font-bold text-dark">${getSubtotal().toFixed(2)}</span>
                                         </div>
                                         {getDiscount() > 0 && (
                                             <div className="flex items-center justify-between">
-                                                <span className="text-sm md:text-base text-green-600">You Save</span>
+                                                <span className="text-sm md:text-base text-green-600 font-semibold uppercase tracking-wider">You Save</span>
                                                 <span className="font-bold text-green-600">-${getDiscount().toFixed(2)}</span>
                                             </div>
                                         )}
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm md:text-base text-dark/60">Shipping</span>
-                                            <span className="font-bold text-green-600">Free</span>
+                                            <span className="text-sm md:text-base text-dark/60 font-semibold uppercase tracking-wider">Shipping</span>
+                                            <span className="font-bold text-dark">${shippingFee.toFixed(2)}</span>
                                         </div>
                                         {couponCode && (
                                             <div className="flex items-center justify-between">
@@ -308,15 +311,65 @@ const CartPage = () => {
                                         )}
                                     </div>
 
-                                    <div className="mb-10">
+                                    <div className="mb-6 md:mb-8">
+                                        <TitleComponent size="small" className="text-dark/60 font-bold uppercase tracking-widest mb-3 md:mb-4">
+                                            Delivery Speed
+                                        </TitleComponent>
+                                        <div className="flex flex-col gap-2">
+                                            <label className={clsx(
+                                                "flex items-center justify-between p-3 md:p-4 border cursor-pointer duration-300",
+                                                shippingMethod === 'standard' ? "border-amber bg-amber/5" : "border-gray-100 hover:border-amber/30"
+                                            )}>
+                                                <div className="flex items-center gap-3">
+                                                    <input
+                                                        type="radio"
+                                                        className="sr-only"
+                                                        checked={shippingMethod === 'standard'}
+                                                        onChange={() => setShippingMethod('standard')}
+                                                    />
+                                                    <div className="size-4 border-2 border-gray-200 rounded-full flex items-center justify-center">
+                                                        <div className={clsx("size-2 bg-amber rounded-full duration-300", shippingMethod === 'standard' ? "scale-100" : "scale-0")} />
+                                                    </div>
+                                                    <div className="flex flex-col">
+                                                        <span className="text-xs font-semibold text-dark uppercase tracking-wider">Standard</span>
+                                                        <span className="text-xs text-dark/40 font-medium">3-5 Business Days</span>
+                                                    </div>
+                                                </div>
+                                                <span className="text-xs font-semibold text-dark">$5.00</span>
+                                            </label>
+                                            <label className={clsx(
+                                                "flex items-center justify-between p-3 md:p-4 border cursor-pointer duration-300",
+                                                shippingMethod === 'urgent' ? "border-amber bg-amber/5" : "border-gray-100 hover:border-amber/30"
+                                            )}>
+                                                <div className="flex items-center gap-3">
+                                                    <input
+                                                        type="radio"
+                                                        className="sr-only"
+                                                        checked={shippingMethod === 'urgent'}
+                                                        onChange={() => setShippingMethod('urgent')}
+                                                    />
+                                                    <div className="size-4 border-2 border-gray-200 rounded-full flex items-center justify-center">
+                                                        <div className={clsx("size-2 bg-amber rounded-full duration-300", shippingMethod === 'urgent' ? "scale-100" : "scale-0")} />
+                                                    </div>
+                                                    <div className="flex flex-col">
+                                                        <span className="text-xs font-semibold text-dark uppercase tracking-wider">Urgent</span>
+                                                        <span className="text-xs text-dark/40 font-medium">1-2 Business Days</span>
+                                                    </div>
+                                                </div>
+                                                <span className="text-xs font-semibold text-dark">$15.00</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div className="mb-6 md:mb-10">
                                         <div className="flex items-center justify-between">
-                                            <span className="font-bold text-dark text-lg md:text-xl">Total</span>
-                                            <span className="font-bold text-dark text-2xl md:text-3xl tracking-tighter">${getTotal().toFixed(2)}</span>
+                                            <span className="font-bold text-dark text-base md:text-lg">Total</span>
+                                            <span className="font-bold text-dark text-xl md:text-3xl tracking-tighter">${getTotal().toFixed(2)}</span>
                                         </div>
                                     </div>
 
                                     {/* Coupon Block */}
-                                    <div className="mb-10">
+                                    <div className="mb-6 md:mb-10">
                                         <TitleComponent size="small" className="text-dark/60 font-bold uppercase tracking-widest mb-4">
                                             Coupon Code
                                         </TitleComponent>
@@ -328,7 +381,7 @@ const CartPage = () => {
                                                 placeholder="Enter code"
                                                 className="flex-1 border border-gray-200 px-4 py-3 text-sm font-medium text-dark focus:border-amber duration-300 uppercase placeholder:normal-case placeholder:text-dark/30 outline-none w-full"
                                             />
-                                            <ThemeButton variant="dark" className="px-6 text-xs uppercase font-bold" onClick={handleApplyCoupon}>
+                                            <ThemeButton variant="dark" className="px-6 text-xs uppercase font-semibold" onClick={handleApplyCoupon}>
                                                 Apply
                                             </ThemeButton>
                                         </div>
@@ -349,18 +402,18 @@ const CartPage = () => {
                                         </Link>
                                     </div>
 
-                                    <div className="flex gap-6 justify-center mt-10 pt-10 border-t border-gray-100 flex-wrap">
+                                    <div className="flex gap-4 md:gap-6 justify-center mt-6 md:mt-10 pt-6 md:pt-10 border-t border-gray-100 flex-wrap">
                                         <div className="flex flex-col items-center gap-2 text-center">
                                             <LockIcon size={18} className="text-amber" weight="bold" />
-                                            <span className="text-[10px] text-dark/40 font-bold uppercase tracking-wider">Secure Checkout</span>
+                                            <span className="text-xs text-dark/30 font-semibold uppercase tracking-wider">Secure Checkout</span>
                                         </div>
                                         <div className="flex flex-col items-center gap-2 text-center">
                                             <TruckIcon size={18} className="text-amber" weight="bold" />
-                                            <span className="text-[10px] text-dark/40 font-bold uppercase tracking-wider">Free Shipping</span>
+                                            <span className="text-xs text-dark/30 font-semibold uppercase tracking-wider">Global Shipping</span>
                                         </div>
                                         <div className="flex flex-col items-center gap-2 text-center">
                                             <ArrowUUpLeftIcon size={18} className="text-amber" weight="bold" />
-                                            <span className="text-[10px] text-dark/40 font-bold uppercase tracking-wider">Easy Returns</span>
+                                            <span className="text-xs text-dark/30 font-semibold uppercase tracking-wider">Easy Returns</span>
                                         </div>
                                     </div>
                                 </div>

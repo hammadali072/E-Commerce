@@ -23,23 +23,35 @@ const cartReducer = (state, action) => {
             };
 
         case 'ADD_TO_CART': {
-            const existingItemIndex = state.items.findIndex(item => item.id === action.payload.id);
+            const { id, quantity = 1, selectedSize = '', selectedColor = '', stock: productStock } = action.payload;
+            const existingItemIndex = state.items.findIndex(item => 
+                item.id === id && 
+                item.selectedSize === selectedSize && 
+                item.selectedColor === selectedColor
+            );
+
+            const stock = productStock !== undefined ? productStock : 20;
+
             if (existingItemIndex > -1) {
                 const updatedItems = [...state.items];
                 const currentQty = updatedItems[existingItemIndex].quantity;
-                const stock = action.payload.stock !== undefined ? action.payload.stock : 20;
+                const newQty = Math.min(currentQty + quantity, stock);
                 
-                if (currentQty < stock) {
-                    updatedItems[existingItemIndex] = {
-                        ...updatedItems[existingItemIndex],
-                        quantity: currentQty + 1
-                    };
-                }
+                updatedItems[existingItemIndex] = {
+                    ...updatedItems[existingItemIndex],
+                    quantity: newQty
+                };
                 return { ...state, items: updatedItems };
             }
+
             return {
                 ...state,
-                items: [...state.items, { ...action.payload, quantity: 1, selectedSize: '', selectedColor: '' }]
+                items: [...state.items, { 
+                    ...action.payload, 
+                    quantity: Math.min(quantity, stock), 
+                    selectedSize, 
+                    selectedColor 
+                }]
             };
         }
 
@@ -97,6 +109,12 @@ export const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, initialState);
     const [couponCode, setCouponCode] = useState('');
     const [couponDiscount, setCouponDiscount] = useState(0);
+    const [shippingMethod, setShippingMethod] = useState('standard'); // 'standard' or 'urgent'
+
+    const SHIPPING_FEES = {
+        'standard': 5.00,
+        'urgent': 15.00
+    };
 
     // Load from localStorage
     useEffect(() => {
@@ -126,7 +144,9 @@ export const CartProvider = ({ children }) => {
         }
         return total;
     }, 0);
-    const getTotal = () => Math.max(0, getSubtotal() - couponDiscount);
+    
+    const shippingFee = SHIPPING_FEES[shippingMethod] || 0;
+    const getTotal = () => Math.max(0, getSubtotal() - couponDiscount + shippingFee);
 
     const applyCoupon = (code) => {
         const normalizedCode = code.trim().toUpperCase();
@@ -160,7 +180,10 @@ export const CartProvider = ({ children }) => {
             couponCode,
             couponDiscount,
             applyCoupon,
-            removeCoupon
+            removeCoupon,
+            shippingMethod,
+            setShippingMethod,
+            shippingFee
         }}>
             {children}
         </CartContext.Provider>

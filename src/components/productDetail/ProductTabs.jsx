@@ -23,7 +23,7 @@ const ProductTabs = ({ product }) => {
                             key={tab}
                             onClick={() => setActiveTab(tab)}
                             className={clsx(
-                                "pb-3 md:pb-4 text-[10px] sm:text-xs md:text-sm lg:text-base font-bold uppercase tracking-[0.15em] md:tracking-[0.2em] relative duration-300 whitespace-nowrap flex-shrink-0",
+                                "pb-3 md:pb-4 text-xs md:text-sm lg:text-base font-semibold uppercase tracking-[0.15em] md:tracking-[0.2em] relative duration-300 whitespace-nowrap flex-shrink-0",
                                 activeTab === tab ? 'text-dark' : 'text-dark/40 hover:text-dark/60'
                             )}
                         >
@@ -65,8 +65,8 @@ const ProductTabs = ({ product }) => {
                                         "flex p-3 md:p-4",
                                         idx % 2 === 0 ? 'bg-card-lighter' : 'bg-white'
                                     )}>
-                                        <span className="w-1/3 text-[10px] md:text-sm font-bold text-dark/40 uppercase tracking-widest capitalize">{label}</span>
-                                        <span className="w-2/3 text-xs md:text-sm font-bold text-dark capitalize">{value}</span>
+                                        <span className="w-1/3 text-xs md:text-sm font-semibold text-dark/40 uppercase tracking-widest capitalize">{label}</span>
+                                        <span className="w-2/3 text-xs md:text-sm font-semibold text-dark capitalize">{value}</span>
                                     </div>
                                 ))}
                             </div>
@@ -83,7 +83,7 @@ const ProductTabs = ({ product }) => {
                                         </div>
                                         <TitleComponent type="h5" className="text-dark mb-2 md:mb-3 text-sm md:text-base">{title}</TitleComponent>
                                         <p className="text-dark/40 text-xs md:text-sm leading-relaxed">{desc}</p>
-                                        <span className="mt-3 md:mt-4 text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-amber">{badge}</span>
+                                        <span className="mt-3 md:mt-4 text-xs font-semibold uppercase tracking-widest text-amber">{badge}</span>
                                     </div>
                                 ))}
                             </div>
