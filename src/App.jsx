@@ -12,6 +12,8 @@ import CartPage from "./pages/cartPage"
 import CheckoutPage from "./pages/checkoutPage"
 import OrderSuccessPage from "./pages/orderSuccessPage"
 import ProfilePage from "./pages/profilePage"
+import LoginPage from "./pages/loginPage"
+import SignupPage from "./pages/signupPage"
 
 function App() {
   const { pathname } = useLocation();
@@ -20,9 +22,11 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  const isAuthPage = pathname === '/login' || pathname === '/signup';
+
   return (
     <>
-      <Header />
+      {!isAuthPage && <Header />}
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
@@ -48,8 +52,10 @@ function App() {
         <Route path="/order-success" element={<OrderSuccessPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/product/:slug" element={<ProductDetailPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
-      <Footer />
+      {!isAuthPage && <Footer />}
     </>
   )
 }
