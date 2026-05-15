@@ -4,16 +4,18 @@ import { Routes, Route, useLocation } from "react-router-dom"
 import Header from "./components/header/header"
 import Footer from "./components/footer/footer"
 
-import HomePage from "./pages/homePage"
-import ShopPage from "./pages/shopPage"
-import WishlistPage from "./pages/wishlistPage"
-import ProductDetailPage from "./pages/productDetailPage"
-import CartPage from "./pages/cartPage"
-import CheckoutPage from "./pages/checkoutPage"
-import OrderSuccessPage from "./pages/orderSuccessPage"
-import ProfilePage from "./pages/profilePage"
-import LoginPage from "./pages/loginPage"
-import SignupPage from "./pages/signupPage"
+import HomePage from "./pages/home-page"
+import ShopPage from "./pages/shop-page"
+import WishlistPage from "./pages/wishlist-page"
+import ProductDetailPage from "./pages/product-detail-page"
+import CartPage from "./pages/cart-page"
+import CheckoutPage from "./pages/checkout-page"
+import OrderSuccessPage from "./pages/order-success-page"
+import ProfilePage from "./pages/profile-page"
+import LoginPage from "./pages/login-page"
+import SignupPage from "./pages/signup-page"
+import ForgotPasswordPage from "./pages/forgot-password-page"
+import NotFoundPage from "./pages/not-found-page"
 
 function App() {
   const { pathname } = useLocation();
@@ -22,7 +24,7 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const isAuthPage = pathname === '/login' || pathname === '/signup';
+  const isAuthPage = pathname === '/login' || pathname === '/signup' || pathname === '/forgot-password';
 
   return (
     <>
@@ -54,6 +56,8 @@ function App() {
         <Route path="/product/:slug" element={<ProductDetailPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {!isAuthPage && <Footer />}
     </>
