@@ -16,6 +16,10 @@ import LoginPage from "./pages/login-page"
 import SignupPage from "./pages/signup-page"
 import ForgotPasswordPage from "./pages/forgot-password-page"
 import NotFoundPage from "./pages/not-found-page"
+import AdminLoginPage from "./pages/admin/admin-login-page"
+import AdminDashboardPage from "./pages/admin/admin-dashboard-page"
+import AdminLayout from "./components/adminLayout/adminLayout"
+import ProtectedAdminRoute from "./components/protectedAdminRoute/protectedAdminRoute"
 
 function App() {
   const { pathname } = useLocation();
@@ -25,10 +29,11 @@ function App() {
   }, [pathname]);
 
   const isAuthPage = pathname === '/login' || pathname === '/signup' || pathname === '/forgot-password';
+  const isAdminPage = pathname.startsWith('/admin');
 
   return (
     <>
-      {!isAuthPage && <Header />}
+      {!isAuthPage && !isAdminPage && <Header />}
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
@@ -57,9 +62,22 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
+        {/* Admin Routes */}
+        <Route path="/admin/login" element={<AdminLoginPage />} />
+        <Route path="/admin" element={
+          <ProtectedAdminRoute>
+            <AdminLayout />
+          </ProtectedAdminRoute>
+        }>
+          <Route path="dashboard" element={<AdminDashboardPage />} />
+          {/* Add more admin routes here later */}
+          <Route index element={<AdminDashboardPage />} />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      {!isAuthPage && <Footer />}
+      {!isAuthPage && !isAdminPage && <Footer />}
     </>
   )
 }

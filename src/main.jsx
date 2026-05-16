@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import { WishlistProvider } from './context/WishlistContext'
 import { CartProvider } from './context/CartContext'
+import { AdminAuthProvider } from './context/AdminAuthContext'
 
 import './fonts/fonts.css'
 import './index.css'
@@ -14,7 +15,9 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <WishlistProvider>
         <CartProvider>
-          <App />
+          <AdminAuthProvider>
+            <App />
+          </AdminAuthProvider>
         </CartProvider>
       </WishlistProvider>
     </BrowserRouter>

@@ -3,6 +3,7 @@
 @theme {
   --font-playfairDisplay: 'Playfair Display', serif;
   --font-inter: 'Inter 18pt', sans-serif;
+  --font-openSans: 'Open Sans', sans-serif;
   
   --color-primary: #ffbd2e;
   --color-secondary: #16181c;
@@ -68,7 +69,7 @@
   body {
     padding: 0;
     margin: 0;
-    font-family: var(--font-inter);
+    font-family: var(--font-openSans);
   }
 
   body::-webkit-scrollbar{
