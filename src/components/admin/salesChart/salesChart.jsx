@@ -37,7 +37,7 @@ const SalesChart = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                 <div>
                     <TitleComponent type="h4" className="font-black text-dark">Sales Analytics</TitleComponent>
-                    <TitleComponent type="p" size="small-medium" className="text-dark/40 mt-1">Revenue performance over time</TitleComponent>
+                    <TitleComponent size="small-medium" className="text-dark/40 mt-1">Revenue performance over time</TitleComponent>
                 </div>
 
                 <div className="flex bg-gray-50 p-1 border border-grey-100">

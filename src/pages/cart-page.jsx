@@ -379,7 +379,7 @@ const CartPage = () => {
                                                 value={couponInput}
                                                 onChange={(e) => setCouponInput(e.target.value)}
                                                 placeholder="Enter code"
-                                                className="flex-1 border border-gray-200 px-4 py-3 text-sm font-medium text-dark focus:border-amber duration-300 uppercase placeholder:normal-case placeholder:text-dark/30 outline-none w-full"
+                                                className="flex-1 border border-gray-200 px-4 py-3 text-sm font-medium text-dark focus:border-amber duration-300 uppercase placeholder:normal-case placeholder:text-dark/30 w-full"
                                             />
                                             <ThemeButton variant="dark" className="px-6 text-xs uppercase font-semibold" onClick={handleApplyCoupon}>
                                                 Apply

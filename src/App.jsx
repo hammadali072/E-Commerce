@@ -18,8 +18,12 @@ import ForgotPasswordPage from "./pages/forgot-password-page"
 import NotFoundPage from "./pages/not-found-page"
 import AdminLoginPage from "./pages/admin/admin-login-page"
 import AdminDashboardPage from "./pages/admin/admin-dashboard-page"
+import ProductsListPage from "./pages/admin/products-list-page"
+import AddProductPage from "./pages/admin/add-product-page"
+import EditProductPage from "./pages/admin/edit-product-page"
 import AdminLayout from "./components/adminLayout/adminLayout"
 import ProtectedAdminRoute from "./components/protectedAdminRoute/protectedAdminRoute"
+import { ProductProvider } from "./context/ProductContext"
 
 function App() {
   const { pathname } = useLocation();
@@ -32,7 +36,7 @@ function App() {
   const isAdminPage = pathname.startsWith('/admin');
 
   return (
-    <>
+    <ProductProvider>
       {!isAuthPage && !isAdminPage && <Header />}
       <Routes>
         <Route index element={<HomePage />} />
@@ -71,6 +75,9 @@ function App() {
           </ProtectedAdminRoute>
         }>
           <Route path="dashboard" element={<AdminDashboardPage />} />
+          <Route path="products" element={<ProductsListPage />} />
+          <Route path="products/add" element={<AddProductPage />} />
+          <Route path="products/edit/:id" element={<EditProductPage />} />
           {/* Add more admin routes here later */}
           <Route index element={<AdminDashboardPage />} />
         </Route>
@@ -78,7 +85,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {!isAuthPage && !isAdminPage && <Footer />}
-    </>
+    </ProductProvider>
   )
 }
 

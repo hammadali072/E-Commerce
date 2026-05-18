@@ -85,7 +85,7 @@ const AdminLayout = () => {
                                         isActive
                                             ? "bg-primary text-white shadow-lg shadow-primary/20"
                                             : "text-dark/40 hover:bg-gray-50 hover:text-dark",
-                                        isCollapsed && "justify-center px-0 mx-auto w-12 rounded-sm"
+                                        isCollapsed && "justify-center px-0 mx-auto w-12   "
                                     )}
                                 >
                                     <Icon size={22} weight={isActive ? "fill" : "bold"} className={clsx("duration-300 shrink-0", isActive ? "text-white" : link.color)} />
@@ -118,20 +118,20 @@ const AdminLayout = () => {
                     <div className="flex items-center gap-2 md:gap-4 flex-1">
                         <button
                             onClick={() => setIsSidebarOpen(true)}
-                            className="lg:hidden p-2 text-dark hover:bg-gray-100 duration-300 rounded-sm"
+                            className="lg:hidden p-2 text-dark hover:bg-gray-100 duration-300"
                         >
                             <ListIcon size={24} weight="bold" />
                         </button>
-                        
+
                         <button
                             onClick={() => setIsCollapsed(!isCollapsed)}
-                            className="hidden lg:flex p-2 text-dark/30 hover:text-dark hover:bg-gray-100 duration-300 rounded-sm"
+                            className="hidden lg:flex p-2 text-dark/30 hover:text-dark hover:bg-gray-100 duration-300"
                         >
                             <ListIcon size={22} weight="bold" />
                         </button>
 
                         {/* Search Bar (Desktop) */}
-                        <div className="hidden md:flex items-center gap-3 bg-gray-50 px-4 py-2.5 rounded-sm max-w-md w-full border border-transparent focus-within:border-primary/30 focus-within:bg-white duration-300">
+                        <div className="hidden md:flex items-center gap-3 bg-gray-50 px-4 py-2.5    max-w-md w-full border border-transparent focus-within:border-primary/30 focus-within:bg-white duration-300">
                             <MagnifyingGlassIcon size={20} weight="bold" className="text-dark/30" />
                             <input
                                 type="text"
@@ -139,7 +139,7 @@ const AdminLayout = () => {
                                 className="text-sm font-medium text-dark placeholder:text-dark/30 w-full outline-none bg-transparent"
                             />
                         </div>
-                        
+
                         {/* Mobile Search Toggle (Optional improvement) */}
                         <button className="md:hidden p-2 text-dark/40 hover:text-dark duration-300">
                             <MagnifyingGlassIcon size={22} weight="bold" />
@@ -147,15 +147,15 @@ const AdminLayout = () => {
                     </div>
 
                     <div className="flex items-center gap-1 sm:gap-4">
-                        <button className="relative p-2 text-dark/40 hover:text-primary duration-300 group hover:bg-primary/5 rounded-full">
+                        <button className="relative p-2 text-dark/40 hover:text-primary duration-300 group hover:bg-primary/5">
                             <BellIcon size={24} weight="bold" />
-                            <span className="absolute top-1 right-1 size-4 bg-primary text-[8px] text-white font-black flex items-center justify-center rounded-full border-2 border-white">6</span>
+                            <span className="absolute top-1 right-1 size-4 bg-primary text-xs text-white font-semibold flex items-center justify-center">6</span>
                         </button>
 
                         <div className="w-px h-6 bg-grey-100 mx-1 sm:mx-2" />
 
                         <div className="flex items-center gap-2 sm:gap-3 group cursor-pointer pl-1">
-                            <div className="size-9 sm:size-11 bg-purple-100 flex items-center justify-center rounded-full overflow-hidden border border-grey-100 shadow-sm group-hover:border-primary/30 duration-300">
+                            <div className="size-9 sm:size-11 bg-purple-100 flex items-center justify-center overflow-hidden border border-grey-100 shadow-sm group-hover:border-primary/30 duration-300">
                                 <img
                                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100"
                                     alt="Admin"
@@ -164,7 +164,7 @@ const AdminLayout = () => {
                             </div>
                             <div className="hidden sm:block">
                                 <p className="text-xs sm:text-sm font-bold text-dark leading-none">Moni Roy</p>
-                                <p className="text-[10px] sm:text-xs text-dark/40 font-medium mt-1">Admin</p>
+                                <p className="text-xs sm:text-xs text-dark/40 font-medium mt-1">Admin</p>
                             </div>
                             <CaretDownIcon size={12} weight="bold" className="text-dark/20 group-hover:text-dark duration-300 hidden xs:block" />
                         </div>
@@ -174,7 +174,7 @@ const AdminLayout = () => {
                 {/* Main Viewport */}
                 <main className="p-4 sm:p-8 flex-1">
                     <div className="animate-fadeIn">
-                        <Outlet />
+                        <Outlet context={{ isCollapsed }} />
                     </div>
                 </main>
             </div>

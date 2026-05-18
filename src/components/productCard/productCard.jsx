@@ -37,7 +37,8 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
                 <div className="relative overflow-hidden mb-8 bg-off-white">
                     <img
                         src={product.image}
-                        alt={product.name}
+                        alt={product.imageAltText || product.name}
+                        title={product.metaTitle || product.name}
                         className="size-full aspect-square object-contain duration-700 group-hover:scale-105"
                     />
                 </div>
@@ -76,7 +77,8 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
                 <Link to={`/product/${slugify(product.name)}`} className="relative w-full sm:size-40 md:size-48 lg:size-56 bg-card-lighter flex-shrink-0 flex items-center justify-center overflow-hidden aspect-square sm:aspect-auto">
                     <img
                         src={product.image}
-                        alt={product.name}
+                        alt={product.imageAltText || product.name}
+                        title={product.metaTitle || product.name}
                         className="size-[80%] object-contain drop-shadow-xl duration-700 group-hover/card:scale-105"
                     />
                     {badgeText && (
@@ -189,7 +191,8 @@ const ProductCard = ({ product, layout = 'grid', variant = 'default' }) => {
             <Link to={`/product/${slugify(product.name)}`} className="relative aspect-square bg-card-lighter mb-4 md:mb-6 flex items-center justify-center overflow-hidden block">
                 <img
                     src={product.image}
-                    alt={product.name}
+                    alt={product.imageAltText || product.name}
+                    title={product.metaTitle || product.name}
                     className="size-[85%] object-contain drop-shadow-xl duration-700 group-hover:scale-105"
                 />
             </Link>
@@ -242,7 +245,9 @@ ProductCard.propTypes = {
         image: PropTypes.string,
         rating: PropTypes.number,
         badge: PropTypes.string,
-        isBestseller: PropTypes.bool
+        isBestseller: PropTypes.bool,
+        imageAltText: PropTypes.string,
+        metaTitle: PropTypes.string
     }).isRequired,
     layout: PropTypes.oneOf(['grid', 'list']),
     variant: PropTypes.oneOf(['default', 'premium'])

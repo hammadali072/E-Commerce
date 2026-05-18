@@ -50,7 +50,7 @@ const AdminLoginPage = () => {
                     <TitleComponent type="h1" className="text-dark tracking-tight">
                         E-SHOP <span className="text-amber">ADMIN</span>
                     </TitleComponent>
-                    <TitleComponent type="p" size="extra-small-bold" className="text-dark/40 uppercase tracking-[0.3em] mt-2">
+                    <TitleComponent size="extra-small-bold" className="text-dark/40 uppercase tracking-[0.3em] mt-2">
                         Central Management Portal
                     </TitleComponent>
                 </div>
@@ -114,7 +114,7 @@ const AdminLoginPage = () => {
                 </div>
 
                 {/* Footer Info */}
-                <TitleComponent type="p" size="extra-small-medium" className="text-center text-dark/20 uppercase tracking-[0.1em] mt-8">
+                <TitleComponent size="extra-small-medium" className="text-center text-dark/20 uppercase tracking-[0.1em] mt-8">
                     &copy; 2026 E-SHOP Digital Ecosystem. All Rights Reserved.
                 </TitleComponent>
             </div>

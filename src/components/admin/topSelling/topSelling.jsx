@@ -15,7 +15,7 @@ const TopSelling = () => {
         <div className="bg-white border border-grey-100/50 shadow-1 p-6 sm:p-8">
             <div className="mb-8">
                 <TitleComponent type="h4" className="font-black text-dark">Top Selling</TitleComponent>
-                <TitleComponent type="p" size="small-medium" className="text-dark/40 mt-1">Best performing products this month</TitleComponent>
+                <TitleComponent size="small-medium" className="text-dark/40 mt-1">Best performing products this month</TitleComponent>
             </div>
 
             <div className="flex flex-col">

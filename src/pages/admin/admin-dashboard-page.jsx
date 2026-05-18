@@ -13,7 +13,7 @@ const AdminDashboardPage = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <TitleComponent type="h2" className="tracking-tight uppercase text-xl sm:text-2xl">Dashboard</TitleComponent>
-                    <TitleComponent type="p" size="small-medium" className="text-dark/40 mt-1">
+                    <TitleComponent size="small-medium" className="text-dark/40 mt-1">
                         Performance overview & real-time insights
                     </TitleComponent>
                 </div>

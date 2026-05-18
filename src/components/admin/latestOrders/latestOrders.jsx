@@ -124,7 +124,7 @@ const LatestOrders = () => {
             <div className="p-6 sm:p-8 border-b border-gray-50 flex items-center justify-between flex-wrap gap-2">
                 <div>
                     <TitleComponent type="h4" className="font-playfairDisplay font-black text-dark">Latest Orders</TitleComponent>
-                    <TitleComponent type="p" size="small-medium" className="text-dark/40 mt-2">Review your most recent transactions</TitleComponent>
+                    <TitleComponent size="small-medium" className="text-dark/40 mt-2">Review your most recent transactions</TitleComponent>
                 </div>
                 <Link to="/admin/orders" className="flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 duration-300">
                     View All <ArrowRightIcon size={14} weight="bold" />

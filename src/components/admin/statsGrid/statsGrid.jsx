@@ -17,15 +17,15 @@ const StatsGrid = () => {
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {STATS_DATA.map((stat, i) => (
-                <div key={i} className="bg-white p-5 sm:p-6 border border-grey-100/50 rounded-sm group hover:border-primary/50 hover:shadow-1 duration-300">
+                <div key={i} className="bg-white p-5 sm:p-6 border border-grey-100/50 group hover:border-primary/50 hover:shadow-1 duration-300">
                     <div className="flex items-start justify-between mb-6">
                         <div>
-                            <TitleComponent type="p" size="small-semibold" className="text-dark/40 uppercase tracking-widest">
+                            <TitleComponent size="small-semibold" className="text-dark/40 uppercase tracking-widest">
                                 {stat.label}
                             </TitleComponent>
-                            <h3 className='mt-3 text-[#202224] font-openSans font-bold text-2xl sm:text-3xl leading-none'>{stat.value}</h3>
+                            <h3 className='mt-3 text-dark-steel font-openSans font-bold text-2xl sm:text-3xl leading-none'>{stat.value}</h3>
                         </div>
-                        <div className={clsx("size-12 flex items-center justify-center rounded-xl duration-500 group-hover:scale-110", stat.bg)}>
+                        <div className={clsx("size-12 flex items-center justify-center duration-500 group-hover:scale-110", stat.bg)}>
                             <stat.icon size={24} weight="bold" className={stat.color} />
                         </div>
                     </div>
@@ -34,7 +34,7 @@ const StatsGrid = () => {
                             {stat.isUp ? <TrendUpIcon size={16} weight="bold" /> : <TrendDownIcon size={16} weight="bold" />}
                             {stat.change}
                         </div>
-                        <span className="text-[13px] text-dark/40 font-medium whitespace-nowrap">
+                        <span className="text-xs text-dark/40 font-medium whitespace-nowrap">
                             {stat.isUp ? 'Up from last month' : 'Down from last month'}
                         </span>
                     </div>

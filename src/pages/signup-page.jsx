@@ -110,7 +110,7 @@ const SignupPage = () => {
                                         <div className="relative">
                                             <input
                                                 type="text" name="firstName" value={formData.firstName} onChange={handleInputChange}
-                                                className="w-full border border-gray-200 px-4 py-3.5 text-sm font-medium text-dark focus:border-amber outline-none duration-300"
+                                                className="w-full border border-gray-200 px-4 py-3.5 text-sm font-medium text-dark focus:border-amber duration-300"
                                                 placeholder="John" required
                                             />
                                             <UserIcon size={20} className="absolute right-4 top-1/2 -translate-y-1/2 text-dark/20" />
@@ -121,7 +121,7 @@ const SignupPage = () => {
                                         <div className="relative">
                                             <input
                                                 type="text" name="lastName" value={formData.lastName} onChange={handleInputChange}
-                                                className="w-full border border-gray-200 px-4 py-3.5 text-sm font-medium text-dark focus:border-amber outline-none duration-300"
+                                                className="w-full border border-gray-200 px-4 py-3.5 text-sm font-medium text-dark focus:border-amber duration-300"
                                                 placeholder="Doe" required
                                             />
                                             <UserIcon size={20} className="absolute right-4 top-1/2 -translate-y-1/2 text-dark/20" />
@@ -134,7 +134,7 @@ const SignupPage = () => {
                                     <div className="relative">
                                         <input
                                             type="email" name="email" value={formData.email} onChange={handleInputChange}
-                                            className="w-full border border-gray-200 px-4 py-3.5 sm:px-5 sm:py-4 text-sm font-medium text-dark focus:border-amber outline-none duration-300"
+                                            className="w-full border border-gray-200 px-4 py-3.5 sm:px-5 sm:py-4 text-sm font-medium text-dark focus:border-amber duration-300"
                                             placeholder="your@email.com" required
                                         />
                                         <EnvelopeIcon size={20} className="absolute right-4 top-1/2 -translate-y-1/2 text-dark/20" />
@@ -146,7 +146,7 @@ const SignupPage = () => {
                                     <div className="relative">
                                         <input
                                             type={showPassword ? "text" : "password"} name="password" value={formData.password} onChange={handleInputChange}
-                                            className="w-full border border-gray-200 px-4 py-3.5 sm:px-5 sm:py-4 text-sm font-medium text-dark focus:border-amber outline-none duration-300"
+                                            className="w-full border border-gray-200 px-4 py-3.5 sm:px-5 sm:py-4 text-sm font-medium text-dark focus:border-amber duration-300"
                                             placeholder="••••••••" required
                                         />
                                         <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-dark/30 hover:text-dark duration-300">
@@ -168,7 +168,7 @@ const SignupPage = () => {
                                         <input
                                             type={showConfirmPassword ? "text" : "password"} name="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange}
                                             className={clsx(
-                                                "w-full border px-4 py-3.5 sm:px-5 sm:py-4 text-sm font-medium text-dark focus:border-amber outline-none duration-300 pr-12",
+                                                "w-full border px-4 py-3.5 sm:px-5 sm:py-4 text-sm font-medium text-dark focus:border-amber duration-300 pr-12",
                                                 !passwordsMatch && isConfirmPasswordDirty ? "border-red-400" : "border-gray-200",
                                                 passwordsMatch && isConfirmPasswordDirty && "border-green-500"
                                             )}
