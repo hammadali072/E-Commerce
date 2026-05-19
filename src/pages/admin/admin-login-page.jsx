@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import { LockKeyIcon, EyeIcon, EyeSlashIcon, ChartLineUpIcon } from '@phosphor-icons/react';
 import clsx from 'clsx';
@@ -62,7 +63,7 @@ const AdminLoginPage = () => {
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-2">
-                            <label className="text-[10px] text-dark/40 font-bold uppercase tracking-widest ml-1">
+                            <label className="text-xs text-dark/40 font-bold uppercase tracking-widest ml-1">
                                 Secure Access Key
                             </label>
                             <div className="relative group/input">
@@ -89,7 +90,7 @@ const AdminLoginPage = () => {
                                 </button>
                             </div>
                             {error && (
-                                <p className="text-red-500 text-[10px] font-bold uppercase tracking-wider ml-1 animate-shake">
+                                <p className="text-red-500 text-xs font-bold uppercase tracking-wider ml-1 animate-shake">
                                     {error}
                                 </p>
                             )}

@@ -100,17 +100,21 @@ const AdminLayout = () => {
                 <div className="p-4 border-t border-grey-100">
                     <button
                         onClick={handleLogout}
-                        className="w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold tracking-widest text-red-400 hover:bg-red-400/10 duration-300 group"
+                        title={isCollapsed ? "Sign Out" : ""}
+                        className={clsx(
+                            "flex items-center gap-3 py-3 text-sm font-semibold tracking-widest text-red-400 hover:bg-red-400/10 duration-300 group",
+                            isCollapsed ? "justify-center w-12 mx-auto px-0" : "w-full px-4"
+                        )}
                     >
-                        <SignOutIcon size={20} weight="bold" className="group-hover:translate-x-1 duration-300" />
-                        Sign Out
+                        <SignOutIcon size={20} weight="bold" className="group-hover:translate-x-1 duration-300 shrink-0" />
+                        {!isCollapsed && <span className="whitespace-nowrap">Sign Out</span>}
                     </button>
                 </div>
             </aside>
 
             {/* Main Content Area */}
             <div className={clsx(
-                "flex-1 flex flex-col duration-300 min-w-0 transition-all",
+                "flex-1 flex flex-col duration-300 min-w-0",
                 isCollapsed ? "lg:pl-20" : "lg:pl-64 xl:pl-72"
             )}>
                 {/* Top Header Bar */}
@@ -131,7 +135,7 @@ const AdminLayout = () => {
                         </button>
 
                         {/* Search Bar (Desktop) */}
-                        <div className="hidden md:flex items-center gap-3 bg-gray-50 px-4 py-2.5    max-w-md w-full border border-transparent focus-within:border-primary/30 focus-within:bg-white duration-300">
+                        <div className="hidden md:flex items-center gap-3 bg-gray-50 px-4 py-2.5 max-w-md w-full border border-transparent focus-within:border-primary/30 focus-within:bg-white duration-300">
                             <MagnifyingGlassIcon size={20} weight="bold" className="text-dark/30" />
                             <input
                                 type="text"

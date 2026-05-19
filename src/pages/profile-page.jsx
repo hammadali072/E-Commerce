@@ -57,7 +57,7 @@ const ProfilePage = () => {
                                     >
                                         <div className="flex items-center gap-4">
                                             <tab.icon size={18} weight={activeTab === tab.id ? 'fill' : 'bold'} />
-                                            <span className="text-[11px] font-bold uppercase tracking-[0.15em]">{tab.label}</span>
+                                            <span className="text-xs font-bold uppercase tracking-widest">{tab.label}</span>
                                         </div>
                                         <CaretRightIcon size={14} weight="bold" className={clsx(
                                             'duration-300',
@@ -67,7 +67,7 @@ const ProfilePage = () => {
                                 ))}
                                 <button className="flex items-center gap-4 px-6 py-4 text-red-500 hover:bg-red-50 duration-300 border-t border-gray-100">
                                     <SignOutIcon size={18} weight="bold" />
-                                    <span className="text-[11px] font-bold uppercase tracking-[0.15em]">Log Out</span>
+                                    <span className="text-xs font-bold uppercase tracking-widest">Log Out</span>
                                 </button>
                             </nav>
 

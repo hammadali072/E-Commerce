@@ -39,21 +39,21 @@ const WishlistPage = () => {
             return (
                 <div className="flex items-center gap-1.5 mt-1">
                     <div className="size-1.5 rounded-full bg-red-500" />
-                    <span className="text-[10px] font-medium text-red-500">Out of Stock</span>
+                    <span className="text-xs font-medium text-red-500">Out of Stock</span>
                 </div>
             );
         } else if (stock > 0 && stock <= 5) {
             return (
                 <div className="flex items-center gap-1.5 mt-1">
                     <div className="size-1.5 rounded-full bg-amber" />
-                    <span className="text-[10px] font-bold text-amber">Only {stock} Left</span>
+                    <span className="text-xs font-bold text-amber">Only {stock} Left</span>
                 </div>
             );
         } else {
             return (
                 <div className="flex items-center gap-1.5 mt-1">
                     <div className="size-1.5 rounded-full bg-green-500" />
-                    <span className="text-[10px] font-bold text-green-600">In Stock</span>
+                    <span className="text-xs font-bold text-green-600">In Stock</span>
                 </div>
             );
         }
@@ -200,7 +200,7 @@ const WishlistPage = () => {
                                                 className="w-full sm:w-14 h-12 border border-gray-200 flex items-center justify-center text-dark/40 flex-shrink-0 hover:bg-red-50 hover:text-red-400 duration-300"
                                             >
                                                 <XIcon size={20} weight="bold" className="sm:size-5" />
-                                                <span className="sm:hidden ml-2 font-bold uppercase text-[10px] tracking-widest">Remove Item</span>
+                                                <span className="sm:hidden ml-2 font-bold uppercase text-xs tracking-widest">Remove Item</span>
                                             </button>
                                         </div>
                                     </div>

@@ -146,10 +146,10 @@ const CartPage = () => {
                                                                 </span>
                                                                 {(item.selectedSize || item.selectedColor) && (
                                                                     <div className="flex items-center gap-3 mt-1">
-                                                                        {item.selectedSize && <span className="text-[10px] text-dark/40 font-semibold uppercase tracking-wider">Size: {item.selectedSize}</span>}
+                                                                        {item.selectedSize && <span className="text-xs text-dark/40 font-semibold uppercase tracking-wider">Size: {item.selectedSize}</span>}
                                                                         {item.selectedColor && (
                                                                             <div className="flex items-center gap-1.5">
-                                                                                <span className="text-[10px] text-dark/40 font-semibold uppercase tracking-wider">Color:</span>
+                                                                                <span className="text-xs text-dark/40 font-semibold uppercase tracking-wider">Color:</span>
                                                                                 <div className="size-2.5 rounded-full border border-dark/10" style={{ backgroundColor: item.selectedColor }} />
                                                                             </div>
                                                                         )}
@@ -178,9 +178,9 @@ const CartPage = () => {
                                                         </td>
                                                         <td className="p-4">
                                                             <div className="flex flex-col gap-0.5 min-w-[100px]">
-                                                                <span className="text-[10px] text-dark/40 font-semibold uppercase tracking-wider">${item.price.toFixed(2)} ea</span>
+                                                                <span className="text-xs text-dark/40 font-semibold uppercase tracking-wider">${item.price.toFixed(2)} ea</span>
                                                                 <span className="text-lg lg:text-xl font-bold text-dark tracking-tight">${linePrice.toFixed(2)}</span>
-                                                                {savings > 0 && <span className="text-[10px] text-green-600 font-semibold uppercase tracking-wider">Save ${savings.toFixed(2)}</span>}
+                                                                {savings > 0 && <span className="text-xs text-green-600 font-semibold uppercase tracking-wider">Save ${savings.toFixed(2)}</span>}
                                                             </div>
                                                         </td>
                                                         <td className="p-4">
@@ -385,8 +385,8 @@ const CartPage = () => {
                                                 Apply
                                             </ThemeButton>
                                         </div>
-                                        {couponError && <p className="text-[11px] text-red-500 mt-2.5 font-medium">{couponError}</p>}
-                                        {couponSuccess && <p className="text-[11px] text-green-600 mt-2.5 font-medium">{couponSuccess}</p>}
+                                        {couponError && <p className="text-xs text-red-500 mt-2.5 font-medium">{couponError}</p>}
+                                        {couponSuccess && <p className="text-xs text-green-600 mt-2.5 font-medium">{couponSuccess}</p>}
                                     </div>
 
                                     <div className="flex flex-col gap-3">

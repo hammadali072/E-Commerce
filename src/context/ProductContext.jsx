@@ -57,6 +57,11 @@ export const ProductProvider = ({ children }) => {
     const updateProduct = (id, productData) => {
         setProducts(prev => prev.map(p => {
             if (p.id === id) {
+                const updatedTags = [];
+                if (productData.isFeatured) updatedTags.push('Featured');
+                if (productData.badgeLabel) updatedTags.push(productData.badgeLabel);
+                if (updatedTags.length === 0) updatedTags.push('New');
+
                 return {
                     ...p,
                     name: productData.name || p.name,
@@ -65,6 +70,7 @@ export const ProductProvider = ({ children }) => {
                     oldPrice: (productData.salePrice && productData.regularPrice && productData.salePrice !== productData.regularPrice) ? `$${productData.regularPrice}` : null,
                     stock: Number(productData.stock) ?? p.stock,
                     img: productData.imageUrl || p.img,
+                    tags: updatedTags,
                     fullData: productData
                 };
             }
@@ -85,7 +91,7 @@ export const ProductProvider = ({ children }) => {
     };
 
     return (
-        <ProductContext.Provider value={{ products, addProduct, updateProduct, deleteProduct, bulkDeleteProducts, getProductById }}>
+        <ProductContext.Provider value={{ products, setProducts, addProduct, updateProduct, deleteProduct, bulkDeleteProducts, getProductById }}>
             {children}
         </ProductContext.Provider>
     );

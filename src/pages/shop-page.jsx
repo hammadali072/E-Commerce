@@ -313,7 +313,7 @@ const ShopPage = () => {
                                     <p className="text-dark/40 font-medium italic mb-4 text-sm md:text-base px-4">No products match your current filters.</p>
                                     <button
                                         onClick={handleClearAll}
-                                        className="text-amber font-bold uppercase text-[10px] md:text-xs tracking-widest hover:text-dark duration-300 border-b-2 border-amber"
+                                        className="text-amber font-bold uppercase text-xs tracking-widest hover:text-dark duration-300 border-b-2 border-amber"
                                     >
                                         Reset All Filters
                                     </button>
@@ -373,7 +373,7 @@ const SidebarContent = ({
             <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
                 <div className="flex-1 flex items-center bg-off-white h-10 md:h-11 border border-transparent focus-within:border-gray-200 duration-300">
                     <div className="w-8 md:w-10 h-full flex items-center justify-center border-r border-gray-200">
-                        <span className="text-[10px] md:text-xs font-black text-dark/40">$</span>
+                        <span className="text-xs font-black text-dark/40">$</span>
                     </div>
                     <input
                         type="number"
@@ -385,7 +385,7 @@ const SidebarContent = ({
                 <span className="text-dark/40 font-bold">-</span>
                 <div className="flex-1 flex items-center bg-off-white h-10 md:h-11 border border-transparent focus-within:border-gray-200 duration-300">
                     <div className="w-8 md:w-10 h-full flex items-center justify-center border-r border-gray-200">
-                        <span className="text-[10px] md:text-xs font-black text-dark/40">$</span>
+                        <span className="text-xs font-black text-dark/40">$</span>
                     </div>
                     <input
                         type="number"
@@ -458,7 +458,7 @@ const SidebarContent = ({
                                 <StarIcon key={i} size={14} weight="fill" className={clsx(i < stars ? "text-amber" : "text-gray-200")} />
                             ))}
                         </div>
-                        <span className="text-[10px] md:text-xs font-bold text-dark/40 ml-auto">{stars.toFixed(1)}</span>
+                        <span className="text-xs font-bold text-dark/40 ml-auto">{stars.toFixed(1)}</span>
                     </label>
                 ))}
             </div>

@@ -55,15 +55,15 @@ const LoginPage = () => {
                             <div className="flex gap-8">
                                 <div className="flex flex-col gap-2">
                                     <LockIcon size={20} weight="bold" className="text-amber" />
-                                    <span className="text-[10px] text-white/40 uppercase tracking-widest font-semibold">Secure Login</span>
+                                    <span className="text-xs text-white/40 uppercase tracking-widest font-semibold">Secure Login</span>
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <ShieldCheckIcon size={20} weight="bold" className="text-amber" />
-                                    <span className="text-[10px] text-white/40 uppercase tracking-widest font-semibold">Data Protected</span>
+                                    <span className="text-xs text-white/40 uppercase tracking-widest font-semibold">Data Protected</span>
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <UserIcon size={20} weight="bold" className="text-amber" />
-                                    <span className="text-[10px] text-white/40 uppercase tracking-widest font-semibold">Private Account</span>
+                                    <span className="text-xs text-white/40 uppercase tracking-widest font-semibold">Private Account</span>
                                 </div>
                             </div>
                         </div>

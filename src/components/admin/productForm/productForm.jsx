@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import TitleComponent from '../../titleComponent/titleComponent';
 import ThemeButton from '../../themeButton/themeButton';
-import { UploadSimpleIcon, XIcon, CheckIcon, TrashIcon, WarningIcon } from '@phosphor-icons/react';
+import { UploadSimpleIcon, XIcon, CheckIcon, TrashIcon, WarningIcon, ArchiveIcon } from '@phosphor-icons/react';
 import clsx from 'clsx';
 
 const CATEGORIES = {
@@ -574,6 +574,32 @@ const ProductForm = ({ initialData, isEditMode = false, onSubmit, onDelete, onCa
                             </div>
                         </div>
                     </div>
+
+                    {/* Danger Zone - Rendered ONLY in Edit Mode */}
+                    {isEditMode && (
+                        <div className="border border-red-200 bg-red-50/40 p-6 mb-6">
+                            <h4 className="text-red-500 font-bold text-sm uppercase tracking-widest mb-1">Danger Zone</h4>
+                            <p className="text-red-400/60 text-xs mb-6 font-medium">These actions are irreversible. Please proceed with caution.</p>
+                            <div className="flex gap-4 flex-row">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsActive(false)}
+                                    className="flex items-center gap-2 border border-red-300 text-red-500 px-6 py-2.5 text-sm font-bold hover:bg-red-50 duration-300 cursor-pointer"
+                                >
+                                    <ArchiveIcon size={18} weight="bold" />
+                                    Archive Product
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setIsModalOpen(true)}
+                                    className="flex items-center gap-2 bg-red-500 text-white px-6 py-2.5 text-sm font-bold hover:bg-red-600 duration-300 cursor-pointer"
+                                >
+                                    <TrashIcon size={18} weight="bold" />
+                                    Delete Permanently
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </div>
 
                 {/* Right Column - Sidebar Panels */}
@@ -637,7 +663,7 @@ const ProductForm = ({ initialData, isEditMode = false, onSubmit, onDelete, onCa
                                         isActive ? "bg-amber justify-end" : "bg-gray-200 justify-start"
                                     )}
                                 >
-                                    <span className="szie-4 rounded-full bg-white shadow-1" />
+                                    <span className="size-4 rounded-full bg-white shadow-1" />
                                 </button>
                             </div>
 
@@ -657,16 +683,13 @@ const ProductForm = ({ initialData, isEditMode = false, onSubmit, onDelete, onCa
                             </div>
 
                             {isFeatured && (
-                                <div className="pt-2 animate-fadeIn">
-                                    <label className="block text-[10px] font-bold text-dark uppercase tracking-widest mb-1.5">Badge Label</label>
-                                    <input
-                                        type="text"
-                                        value={badgeLabel}
-                                        onChange={(e) => setBadgeLabel(e.target.value)}
-                                        placeholder="e.g. New, Hot, Premium"
-                                        className="w-full bg-gray-50 border border-gray-200 px-3 py-2 text-xs font-medium text-dark focus:border-amber focus:bg-white duration-300"
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    value={badgeLabel}
+                                    onChange={(e) => setBadgeLabel(e.target.value)}
+                                    placeholder="Badge label (e.g. New, Hot, Premium)"
+                                    className="w-full border border-gray-200 px-4 py-2.5 text-sm mt-3 focus:border-amber duration-300 outline-none placeholder:text-dark/30 text-dark font-medium"
+                                />
                             )}
                         </div>
                     </div>

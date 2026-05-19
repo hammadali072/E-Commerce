@@ -1,14 +1,16 @@
 import { useState, useEffect, useMemo } from 'react';
+
 import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import {
     MagnifyingGlassIcon, EyeIcon, PencilIcon, TrashIcon,
     CaretLeftIcon, CaretRightIcon, CaretDownIcon, WarningIcon, XIcon
 } from '@phosphor-icons/react';
+import clsx from 'clsx';
+
 import TitleComponent from '../../components/titleComponent/titleComponent';
 import ThemeButton from '../../components/themeButton/themeButton';
 import CustomDropdown from '../../components/admin/customDropdown/customDropdown';
 import { useProducts } from '../../context/ProductContext';
-import clsx from 'clsx';
 
 const ProductsListPage = () => {
     const navigate = useNavigate();
@@ -365,35 +367,28 @@ const ProductsListPage = () => {
 
             {/* Bulk Action Bar */}
             <div className={clsx(
-                "fixed bottom-0 right-0 bg-dark text-white px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 z-40 duration-300",
-                isCollapsed ? "left-0 lg:left-20" : "left-0 lg:left-64 xl:left-72",
-                selectedIds.length > 0 ? "translate-y-0 shadow-bulk-bar" : "translate-y-full"
+                "fixed bottom-0 lg:left-64 xl:left-72 right-0 bg-dark text-white px-8 py-4 z-50 flex items-center justify-between duration-300",
+                selectedIds.length > 0 ? "translate-y-0" : "translate-y-full"
             )}>
-                <div className="text-sm font-bold">
-                    <span className="text-amber mr-2">{selectedIds.length}</span> products selected
+                <div className="text-sm font-semibold text-white">
+                    {selectedIds.length} products selected
                 </div>
-                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
-                    <div className="flex items-center gap-2 hidden sm:flex">
-                        <span className="flex items-center justify-center size-6 bg-white/10 text-white text-xs font-bold  ">
-                            {selectedIds.length}
-                        </span>
-                        <span className="text-sm font-bold text-white/70">Selected</span>
-                    </div>
-                    <div className="h-6 w-px bg-white/10 hidden sm:block" />
-                    <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
-                        <button
-                            onClick={() => {
-                                setProductToDelete('bulk');
-                                setDeleteModalOpen(true);
-                            }}
-                            className="flex-1 sm:flex-none px-4 py-2 border border-red-500/50 text-red-400 text-xs font-bold uppercase tracking-widest   hover:bg-red-500/10 duration-300"
-                        >
-                            Delete
-                        </button>
-                        <button className="flex-1 sm:flex-none px-4 py-2 bg-amber text-dark text-xs font-bold uppercase tracking-widest   hover:bg-amber-hover duration-300">
-                            Collection
-                        </button>
-                    </div>
+                <div className="flex items-center gap-4">
+                    <button
+                        onClick={() => setSelectedIds([])}
+                        className="px-6 py-2.5 border border-white/20 text-white text-sm font-bold hover:bg-white/10 duration-300 cursor-pointer"
+                    >
+                        Clear Selection
+                    </button>
+                    <button
+                        onClick={() => {
+                            setProductToDelete('bulk');
+                            setDeleteModalOpen(true);
+                        }}
+                        className="bg-red-500 text-white px-6 py-2.5 text-sm font-bold hover:bg-red-600 duration-300 cursor-pointer"
+                    >
+                        Delete Selected
+                    </button>
                 </div>
             </div>
 
@@ -461,7 +456,7 @@ const ProductsListPage = () => {
                             </div>
                             <div className="md:w-3/5 p-8 flex flex-col justify-center">
                                 <div className="mb-2 flex items-center gap-2">
-                                    <span className="bg-gray-100 text-dark/70 text-[10px] font-bold uppercase tracking-widest px-2 py-1">
+                                    <span className="bg-gray-100 text-dark/70 text-xs font-bold uppercase tracking-widest px-2 py-1">
                                         {productToView.category}
                                     </span>
                                     <span className="text-xs text-dark/40 uppercase tracking-widest font-bold">SKU: {productToView.sku}</span>
@@ -486,7 +481,7 @@ const ProductsListPage = () => {
                                         <span className="block text-xs font-bold text-dark/50 uppercase tracking-widest mb-2">Applied Tags</span>
                                         <div className="flex flex-wrap gap-2">
                                             {productToView.tags.map(tag => (
-                                                <span key={tag} className="border border-gray-200 text-dark/60 text-[10px] font-bold uppercase tracking-widest px-2 py-1  ">
+                                                <span key={tag} className="border border-gray-200 text-dark/60 text-xs font-bold uppercase tracking-widest px-2 py-1  ">
                                                     {tag}
                                                 </span>
                                             ))}
