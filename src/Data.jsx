@@ -602,3 +602,257 @@ export const pageHeroConfig = {
         filterCategory: 'hot-sale'
     }
 };
+
+export const MockOrdersData = [
+    {
+        id: 'ORD-8392',
+        customer: {
+            name: 'Sarah Jenkins',
+            email: 'sarah.j@example.com',
+            initials: 'SJ'
+        },
+        date: '2026-05-18',
+        time: '14:32',
+        itemsCount: 3,
+        total: 245.99,
+        couponApplied: true,
+        paymentStatus: 'Paid',
+        status: 'Processing',
+        items: [
+            { name: 'Classic Silk Shirt', size: 'M', color: 'Cream', qty: 1, price: 89.99 },
+            { name: 'Tailored Wool Trousers', size: '30', color: 'Charcoal', qty: 1, price: 120.00 },
+            { name: 'Ribbed Knit Tank', size: 'S', color: 'White', qty: 1, price: 36.00 }
+        ],
+        shippingAddress: '128 Fashion Ave, Apt 4B, New York, NY 10001',
+        paymentMethod: 'Visa ending in 4242'
+    },
+    {
+        id: 'ORD-2104',
+        customer: {
+            name: 'Michael Chen',
+            email: 'm.chen@example.com',
+            initials: 'MC'
+        },
+        date: '2026-05-18',
+        time: '11:15',
+        itemsCount: 1,
+        total: 125.00,
+        couponApplied: false,
+        paymentStatus: 'Paid',
+        status: 'Shipped',
+        items: [
+            { name: 'Minimalist Leather Sneakers', size: '42', color: 'White', qty: 1, price: 125.00 }
+        ],
+        shippingAddress: '742 Evergreen Terrace, Seattle, WA 98101',
+        paymentMethod: 'Apple Pay'
+    },
+    {
+        id: 'ORD-4821',
+        customer: {
+            name: 'Emma Rodriguez',
+            email: 'emma.r@example.com',
+            initials: 'ER'
+        },
+        date: '2026-05-17',
+        time: '09:45',
+        itemsCount: 2,
+        total: 89.50,
+        couponApplied: true,
+        paymentStatus: 'Pending',
+        status: 'Pending',
+        items: [
+            { name: 'Oversized Cotton Tee', size: 'L', color: 'Sage', qty: 2, price: 44.75 }
+        ],
+        shippingAddress: '984 Sunset Blvd, Los Angeles, CA 90026',
+        paymentMethod: 'PayPal'
+    },
+    {
+        id: 'ORD-9023',
+        customer: {
+            name: 'David Kim',
+            email: 'david.kim@example.com',
+            initials: 'DK'
+        },
+        date: '2026-05-17',
+        time: '16:20',
+        itemsCount: 4,
+        total: 410.00,
+        couponApplied: false,
+        paymentStatus: 'Paid',
+        status: 'Delivered',
+        items: [
+            { name: 'Suede Chelsea Boots', size: '43', color: 'Tan', qty: 1, price: 180.00 },
+            { name: 'Heavyweight Hoodie', size: 'XL', color: 'Black', qty: 1, price: 95.00 },
+            { name: 'Slim Fit Jeans', size: '32', color: 'Dark Wash', qty: 2, price: 67.50 }
+        ],
+        shippingAddress: '312 Pine St, San Francisco, CA 94104',
+        paymentMethod: 'Mastercard ending in 8812'
+    },
+    {
+        id: 'ORD-5512',
+        customer: {
+            name: 'Amanda Watson',
+            email: 'amanda.w@example.com',
+            initials: 'AW'
+        },
+        date: '2026-05-16',
+        time: '10:05',
+        itemsCount: 1,
+        total: 75.00,
+        couponApplied: false,
+        paymentStatus: 'Failed',
+        status: 'Cancelled',
+        items: [
+            { name: 'Linen Blend Shorts', size: 'S', color: 'Beige', qty: 1, price: 75.00 }
+        ],
+        shippingAddress: '556 Maple Court, Chicago, IL 60611',
+        paymentMethod: 'Visa ending in 1099'
+    },
+    {
+        id: 'ORD-7281',
+        customer: {
+            name: 'James Peterson',
+            email: 'j.peterson@example.com',
+            initials: 'JP'
+        },
+        date: '2026-05-16',
+        time: '13:50',
+        itemsCount: 2,
+        total: 180.00,
+        couponApplied: false,
+        paymentStatus: 'Paid',
+        status: 'Delivered',
+        items: [
+            { name: 'Leather Dress Belts', size: '34', color: 'Brown', qty: 2, price: 90.00 }
+        ],
+        shippingAddress: '1202 Oak Lane, Dallas, TX 75201',
+        paymentMethod: 'Visa ending in 6643'
+    },
+    {
+        id: 'ORD-3049',
+        customer: {
+            name: 'Elena Rostova',
+            email: 'elena.r@example.com',
+            initials: 'ER'
+        },
+        date: '2026-05-15',
+        time: '18:10',
+        itemsCount: 5,
+        total: 395.20,
+        couponApplied: true,
+        paymentStatus: 'Paid',
+        status: 'Delivered',
+        items: [
+            { name: 'Floral Print Maxi Dress', size: 'S', color: 'Multi', qty: 1, price: 145.00 },
+            { name: 'Straw Sun Hat', size: 'One Size', color: 'Natural', qty: 1, price: 45.00 },
+            { name: 'Strappy Leather Sandals', size: '38', color: 'Tan', qty: 1, price: 85.00 },
+            { name: 'Gold Hoop Earrings Set', size: 'One Size', color: 'Gold', qty: 2, price: 60.10 }
+        ],
+        shippingAddress: '404 Ocean Ave, Miami Beach, FL 33139',
+        paymentMethod: 'Amex ending in 3004'
+    },
+    {
+        id: 'ORD-1192',
+        customer: {
+            name: 'William Turner',
+            email: 'w.turner@example.com',
+            initials: 'WT'
+        },
+        date: '2026-05-15',
+        time: '08:30',
+        itemsCount: 2,
+        total: 210.00,
+        couponApplied: false,
+        paymentStatus: 'Paid',
+        status: 'Shipped',
+        items: [
+            { name: 'Merino Wool Sweater', size: 'M', color: 'Navy', qty: 1, price: 135.00 },
+            { name: 'Oxford Cotton Shirt', size: 'M', color: 'Light Blue', qty: 1, price: 75.00 }
+        ],
+        shippingAddress: '88 Harbour View Rd, Boston, MA 02110',
+        paymentMethod: 'Apple Pay'
+    },
+    {
+        id: 'ORD-6045',
+        customer: {
+            name: 'Chloe Bennett',
+            email: 'chloe.b@example.com',
+            initials: 'CB'
+        },
+        date: '2026-05-14',
+        time: '15:45',
+        itemsCount: 1,
+        total: 65.00,
+        couponApplied: false,
+        paymentStatus: 'Pending',
+        status: 'Pending',
+        items: [
+            { name: 'High-Waisted Joggers', size: 'XS', color: 'Heather Gray', qty: 1, price: 65.00 }
+        ],
+        shippingAddress: '233 Peachtree St, Atlanta, GA 30303',
+        paymentMethod: 'PayPal'
+    },
+    {
+        id: 'ORD-8830',
+        customer: {
+            name: 'Robert Miller',
+            email: 'r.miller@example.com',
+            initials: 'RM'
+        },
+        date: '2026-05-14',
+        time: '12:00',
+        itemsCount: 3,
+        total: 198.50,
+        couponApplied: true,
+        paymentStatus: 'Paid',
+        status: 'Delivered',
+        items: [
+            { name: 'Crewneck Sweatshirt', size: 'L', color: 'Forest Green', qty: 1, price: 68.00 },
+            { name: 'Relaxed Fit Chinos', size: '34', color: 'Khaki', qty: 1, price: 78.00 },
+            { name: 'Pima Cotton T-Shirt', size: 'L', color: 'Black', qty: 1, price: 52.50 }
+        ],
+        shippingAddress: '1564 Broadway, New York, NY 10036',
+        paymentMethod: 'Visa ending in 9012'
+    },
+    {
+        id: 'ORD-4493',
+        customer: {
+            name: 'Isabella Rossi',
+            email: 'i.rossi@example.com',
+            initials: 'IR'
+        },
+        date: '2026-05-13',
+        time: '17:35',
+        itemsCount: 2,
+        total: 310.00,
+        couponApplied: false,
+        paymentStatus: 'Paid',
+        status: 'Processing',
+        items: [
+            { name: 'Silk Midi Skirt', size: 'S', color: 'Emerald', qty: 1, price: 165.00 },
+            { name: 'Cashmere Sleeveless Top', size: 'S', color: 'Oatmeal', qty: 1, price: 145.00 }
+        ],
+        shippingAddress: '23 Viale Regina, Rome, IT 00185',
+        paymentMethod: 'Visa ending in 4491'
+    },
+    {
+        id: 'ORD-2940',
+        customer: {
+            name: 'Marcus Aurelius',
+            email: 'marcus.a@example.com',
+            initials: 'MA'
+        },
+        date: '2026-05-13',
+        time: '10:12',
+        itemsCount: 1,
+        total: 90.00,
+        couponApplied: false,
+        paymentStatus: 'Failed',
+        status: 'Cancelled',
+        items: [
+            { name: 'Classic Leather Belt', size: '36', color: 'Black', qty: 1, price: 90.00 }
+        ],
+        shippingAddress: '1 Via dei Fori Imperiali, Rome, IT 00186',
+        paymentMethod: 'Mastercard ending in 0021'
+    }
+];

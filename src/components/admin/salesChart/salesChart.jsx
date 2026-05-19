@@ -41,16 +41,20 @@ const SalesChart = () => {
                 </div>
 
                 <div className="flex bg-gray-50 p-1 border border-grey-100">
-                    {['7 Days', '30 Days', '90 Days'].map((r) => (
+                    {[
+                        { label: '7 Days', value: '7D' },
+                        { label: '30 Days', value: '30D' },
+                        { label: '90 Days', value: '90D' }
+                    ].map((r) => (
                         <button
-                            key={r}
-                            onClick={() => setRange(r)}
+                            key={r.value}
+                            onClick={() => setRange(r.value)}
                             className={clsx(
                                 "px-4 py-1.5 text-xs border border-transparent font-medium duration-300",
-                                range === r ? "bg-white text-primary !border-primary" : "text-dark/40 hover:text-dark"
+                                range === r.value ? "bg-white text-primary !border-primary" : "text-dark/40 hover:text-dark"
                             )}
                         >
-                            {r}
+                            {r.label}
                         </button>
                     ))}
                 </div>

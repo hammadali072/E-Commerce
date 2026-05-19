@@ -47,8 +47,7 @@ const columns = [
         name: 'Items',
         selector: row => row.items,
         sortable: true,
-        center: true,
-        cell: row => <span className="font-bold text-dark">{row.items}</span>,
+        cell: row => <span className="font-bold text-dark w-full text-center">{row.items}</span>,
         // width: '100px'
     },
     {

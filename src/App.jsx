@@ -22,6 +22,7 @@ import ProductsListPage from "./pages/admin/products-list-page"
 import AddProductPage from "./pages/admin/add-product-page"
 import EditProductPage from "./pages/admin/edit-product-page"
 import CollectionsManagerPage from "./pages/admin/collections-manager-page"
+import OrdersListPage from "./pages/admin/orders-list-page"
 import AdminLayout from "./components/adminLayout/adminLayout"
 import ProtectedAdminRoute from "./components/protectedAdminRoute/protectedAdminRoute"
 import { ProductProvider } from "./context/ProductContext"
@@ -80,6 +81,8 @@ function App() {
           <Route path="products/add" element={<AddProductPage />} />
           <Route path="products/edit/:id" element={<EditProductPage />} />
           <Route path="collections" element={<CollectionsManagerPage />} />
+          <Route path="orders" element={<OrdersListPage />} />
+          <Route path="orders/:id" element={<OrdersListPage />} />
           {/* Add more admin routes here later */}
           <Route index element={<AdminDashboardPage />} />
         </Route>
